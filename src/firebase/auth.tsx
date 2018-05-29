@@ -1,8 +1,9 @@
 import { auth } from './firebase';
+//import { promisify } from 'es6-promisify';
 
 //Sign Up
 export const doCreateUserWithEmailAndPassword = (email, password) =>
-auth.createUserWithEmailAndPassword(email, password);
+    auth.createUserWithEmailAndPassword(email, password);
 
 //Sign In
 export const doSignInWithEmailAndPassword = (email, password) => 

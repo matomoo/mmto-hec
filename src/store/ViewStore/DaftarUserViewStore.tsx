@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 
 class DaftarUserStore {
   @observable username = "";
@@ -12,6 +12,7 @@ class DaftarUserStore {
   @observable passwordOneError = "";
   @observable passwordTwoError = "";
   @observable responseFirebase = "";
+  @observable userRole = "pasien";
 
   @action
   usernameOnChange(id) {
@@ -92,11 +93,22 @@ class DaftarUserStore {
   }
 
   @action
-  async validateForm() {
+  validateForm() {
     if (this.usernameError === undefined && this.emailError === undefined && this.passwordOneError === undefined && this.passwordTwoError === undefined ) {
-      await auth.doCreateUserWithEmailAndPassword(this.email, this.passwordOne)
-      .then(() => {
-        this.isValid = true;
+      auth.doCreateUserWithEmailAndPassword(this.email, this.passwordOne)
+      .then((authUser) => {
+        console.log(authUser.user.uid);
+        this.isValid = true;  
+        db.doCreateUser(authUser.user.uid, this.username, this.email, this.userRole);
+          // .then(function(res){
+          //   console.log(res);
+          // })
+          // .catch(error => {
+          //   this.responseFirebase = error.message;
+          //   console.log(this.responseFirebase);
+          //   this.isValid = false;
+          // });
+              
       })
       .catch(error => {
         this.responseFirebase = error.message;

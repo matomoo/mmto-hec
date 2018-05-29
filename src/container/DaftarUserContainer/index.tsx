@@ -23,8 +23,9 @@ export default class DaftarUserContainer extends React.Component<Props, State> {
 		this.props.daftarUserForm.validateForm();
 		if (this.props.daftarUserForm.isValid) {
 			//console.log(this.props);
-			this.props.daftarUserForm.clearStore();
+			//this.props.daftarUserForm.clearStore();
 			this.props.navigation.navigate("Drawer");
+			this.props.daftarUserForm.clearStore();
 		} else {
 			Toast.show({
 				text: "Enter Valid Email & password!",
