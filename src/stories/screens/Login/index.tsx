@@ -5,6 +5,7 @@ import { Container, Content, Header, Body, Title, Button, Text, View, Icon, Foot
 export interface Props {
 	loginForm: any;
 	onLogin: Function;
+	onSignUp: Function;
 }
 export interface State {}
 class Login extends React.Component<Props, State> {
@@ -27,6 +28,11 @@ class Login extends React.Component<Props, State> {
 							<Text>Login</Text>
 						</Button>
 					</View>
+					<View padder>
+						<Button block onPress={() => this.props.onSignUp()}>
+							<Text>Daftar User</Text>
+						</Button>
+					</View>				
 				</Content>
 				<Footer style={{ backgroundColor: "#F8F8F8" }}>
 					<View style={{ alignItems: "center", opacity: 0.5, flexDirection: "row" }}>

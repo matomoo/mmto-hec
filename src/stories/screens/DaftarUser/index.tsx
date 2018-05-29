@@ -24,7 +24,7 @@ class DaftarUser extends React.Component<Props, State> {
 					{this.props.daftarUserForm}
 					<View padder>
 						<Button block onPress={() => this.props.onLogin()}>
-							<Text>Login</Text>
+							<Text>Daftar User</Text>
 						</Button>
 					</View>
 				</Content>

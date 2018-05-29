@@ -31,6 +31,9 @@ export default class LoginContainer extends React.Component<Props, State> {
 			});
 		}
 	}
+	signup(){
+		this.props.navigation.navigate("DaftarUser");
+	}
 	render() {
 		const form = this.props.loginForm;
 		const Fields = (
@@ -59,6 +62,10 @@ export default class LoginContainer extends React.Component<Props, State> {
 				</Item>
 			</Form>
 		);
-		return <Login loginForm={Fields} onLogin={() => this.login()} />;
+		return <Login 
+			loginForm={Fields} 
+			onLogin={() => this.login()} 
+			onSignUp={() => this.signup()}
+		/>;
 	}
 }
