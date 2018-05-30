@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, Container, List, ListItem, Content } from "native-base";
 import { NavigationActions } from "react-navigation";
-
+import { auth } from "../../../firebase";
 const routes = [
 	{
 		route: "Home",
@@ -41,6 +41,7 @@ export default class Sidebar extends React.Component<Props, State> {
 										data.route === "Login"
 											? this.props.navigation.dispatch(resetAction)
 											: this.props.navigation.navigate(data.route);
+										auth.doSignOut();
 									}}
 								>
 									<Text>{data.caption}</Text>

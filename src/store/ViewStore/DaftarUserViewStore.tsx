@@ -1,5 +1,4 @@
 import { observable, action } from "mobx";
-import { auth, db } from "../../firebase";
 
 class DaftarUserStore {
   @observable username = "";
@@ -95,26 +94,26 @@ class DaftarUserStore {
   @action
   validateForm() {
     if (this.usernameError === undefined && this.emailError === undefined && this.passwordOneError === undefined && this.passwordTwoError === undefined ) {
-      auth.doCreateUserWithEmailAndPassword(this.email, this.passwordOne)
-      .then((authUser) => {
-        console.log(authUser.user.uid);
-        this.isValid = true;  
-        db.doCreateUser(authUser.user.uid, this.username, this.email, this.userRole);
-          // .then(function(res){
-          //   console.log(res);
-          // })
-          // .catch(error => {
-          //   this.responseFirebase = error.message;
-          //   console.log(this.responseFirebase);
-          //   this.isValid = false;
-          // });
+      // auth.doCreateUserWithEmailAndPassword(this.email, this.passwordOne)
+      // .then((authUser) => {
+      //   console.log(authUser.user.uid);
+      this.isValid = true;  
+      //   db.doCreateUser(authUser.user.uid, this.username, this.email, this.userRole);
+      //     // .then(function(res){
+      //     //   console.log(res);
+      //     // })
+      //     // .catch(error => {
+      //     //   this.responseFirebase = error.message;
+      //     //   console.log(this.responseFirebase);
+      //     //   this.isValid = false;
+      //     // });
               
-      })
-      .catch(error => {
-        this.responseFirebase = error.message;
-        console.log(this.responseFirebase);
-        this.isValid = false;
-      });
+      // })
+      // .catch(error => {
+      //   this.responseFirebase = error.message;
+      //   console.log(this.responseFirebase);
+      //   this.isValid = false;
+      // });
     }
   }
 

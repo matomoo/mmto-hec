@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import { auth } from "../../firebase";
+
 
 class LoginStore {
   @observable email = "";
@@ -46,17 +46,18 @@ class LoginStore {
   }
 
   @action
-  async validateForm() {
+  validateForm() {
     if (this.emailError === undefined && this.passwordError === undefined) {
-      await auth.doSignInWithEmailAndPassword(this.email, this.password)
-      .then(() => {
-        this.isValid = true;
-      })
-      .catch(error => {
-        this.responseFirebase = error.message;
-        //console.log(this.responseFirebase);
-        this.isValid = false;
-      });
+      // auth.doSignInWithEmailAndPassword(this.email, this.password)
+      // .then(() => {
+      this.isValid = true;
+      //   console.log(this.email);
+      // })
+      // .catch(error => {
+      //   this.responseFirebase = error.message;
+      //   //console.log(this.responseFirebase);
+      //   this.isValid = false;
+      // });
     }
   }
 

@@ -3,6 +3,7 @@ import * as React from "react";
 import { Item, Input, Icon, Form, Toast } from "native-base";
 import { observer, inject } from "mobx-react/native";
 
+import { auth } from "../../firebase";
 import Login from "../../stories/screens/Login";
 
 export interface Props {
@@ -19,9 +20,18 @@ export default class LoginContainer extends React.Component<Props, State> {
 	login() {
 		this.props.loginForm.validateForm();
 		if (this.props.loginForm.isValid) {
-			//console.log(this.props);
-			this.props.loginForm.clearStore();
-			this.props.navigation.navigate("Drawer");
+			auth.doSignInWithEmailAndPassword(this.props.loginForm.email, this.props.loginForm.password)
+				.then(() => {
+					//this.isValid = true;
+					console.log(this.props.loginForm.email);
+					this.props.loginForm.clearStore();
+					this.props.navigation.navigate("Drawer");
+				})
+				.catch(error => {
+					this.props.loginForm.responseFirebase = error.message;
+					//console.log(this.responseFirebase);
+					//this.props.loginForm.isValid = false;
+				});
 		} else {
 			Toast.show({
 				text: "Enter Valid Email & password!",

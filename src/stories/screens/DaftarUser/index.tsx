@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Platform } from "react-native";
-import { Container, Content, Header, Body, Title, Button, Text, View, Icon, Footer } from "native-base";
+import { Container, Content, Header, Body, Button, Text, View, Footer } from "native-base";
+import { Image } from "react-native";
+
 //import styles from "./styles";
 export interface Props {
 	daftarUserForm: any;
@@ -13,8 +15,7 @@ class DaftarUser extends React.Component<Props, State> {
 			<Container>
 				<Header style={{ height: 200 }}>
 					<Body style={{ alignItems: "center" }}>
-						<Icon name="flash" style={{ fontSize: 104 }} />
-						<Title>Kinik Mata Hasanuddin</Title>
+					<Image source={require("../../../../assets/HEC_w150.jpg")} />
 						<View padder>
 							<Text style={{ color: Platform.OS === "ios" ? "#000" : "#FFF" }} />
 						</View>

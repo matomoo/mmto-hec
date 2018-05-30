@@ -4,6 +4,7 @@ import { Item, Input, Icon, Form, Toast } from "native-base";
 import { observer, inject } from "mobx-react/native";
 
 import DaftarUser from "../../stories/screens/DaftarUser";
+import { auth, db } from "../../firebase";
 
 export interface Props {
 	navigation: any;
@@ -22,10 +23,27 @@ export default class DaftarUserContainer extends React.Component<Props, State> {
 	login() {
 		this.props.daftarUserForm.validateForm();
 		if (this.props.daftarUserForm.isValid) {
-			//console.log(this.props);
-			//this.props.daftarUserForm.clearStore();
-			this.props.navigation.navigate("Drawer");
-			this.props.daftarUserForm.clearStore();
+			auth.doCreateUserWithEmailAndPassword(this.props.daftarUserForm.email, this.props.daftarUserForm.passwordOne)
+				.then((authUser) => {
+					db.doCreateUser(authUser.user.uid, this.props.daftarUserForm.username, this.props.daftarUserForm.email, this.props.daftarUserForm.userRole);
+					this.props.navigation.navigate("Drawer");
+					this.props.daftarUserForm.clearStore();
+					// .then(function(res){
+					//   console.log(res);
+					// })
+					// .catch(error => {
+					//   this.responseFirebase = error.message;
+					//   console.log(this.responseFirebase);
+					//   this.isValid = false;
+					// });
+						
+				})
+				.catch(error => {
+					this.props.daftarUserForm.responseFirebase = error.message;
+					console.log(this.props.daftarUserForm.responseFirebase);
+					//this.props.daftarUserForm.isValid = false;
+				});
+			
 		} else {
 			Toast.show({
 				text: "Enter Valid Email & password!",
