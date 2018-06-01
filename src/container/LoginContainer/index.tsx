@@ -9,10 +9,11 @@ import Login from "../../stories/screens/Login";
 export interface Props {
 	navigation: any;
 	loginForm: any;
+	mainStore: any;
 }
 export interface State {}
 
-@inject("loginForm")
+@inject("loginForm", "mainStore")
 @observer
 export default class LoginContainer extends React.Component<Props, State> {
 	emailInput: any;
@@ -21,15 +22,17 @@ export default class LoginContainer extends React.Component<Props, State> {
 		this.props.loginForm.validateForm();
 		if (this.props.loginForm.isValid) {
 			auth.doSignInWithEmailAndPassword(this.props.loginForm.email, this.props.loginForm.password)
-				.then(() => {
+				.then((authUser) => {
 					//this.isValid = true;
-					console.log(this.props.loginForm.email);
+					this.props.mainStore.currentUid = authUser.user.uid;
 					this.props.loginForm.clearStore();
 					this.props.navigation.navigate("Drawer");
+					//console.log(authUser.user.uid);
+					
 				})
 				.catch(error => {
 					this.props.loginForm.responseFirebase = error.message;
-					//console.log(this.responseFirebase);
+					console.log(this.props.loginForm.responseFirebase);
 					//this.props.loginForm.isValid = false;
 				});
 		} else {

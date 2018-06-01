@@ -1,19 +1,17 @@
-import { observable, action, computed } from "mobx";
+import { observable, action } from "mobx";
 
 class HomeStore {
   @observable hasErrored = false;
   @observable isLoading = true;
   @observable items = [];
-  @observable currentUser = "";
+  @observable currentUid = "";
+  @observable currentUsername = "";
+  @observable currentUserRole = "";
 
   @action
   fetchItems(data) {
     this.items = data;
     this.isLoading = false;
-  }
-
-  @computed get isAuthenticated() {
-    return this.currentUser !== null
   }
 
 }
