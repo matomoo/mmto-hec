@@ -4,8 +4,9 @@ import PasienPage from "../index";
 import renderer from "react-test-renderer";
 
 const navigation = { state: jest.fn() };
+const lists = jest.fn();
 
 it("renders correctly", () => {
-	const tree = renderer.create(<PasienPage navigation={navigation} />).toJSON();
+	const tree = renderer.create(<PasienPage navigation={navigation} lists={lists} />).toJSON();
 	expect(tree).toMatchSnapshot();
 });

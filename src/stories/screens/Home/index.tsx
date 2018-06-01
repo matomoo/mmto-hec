@@ -35,13 +35,12 @@ class Home extends React.Component<Props, State> {
     );
 
     const cardDokter = (
-      <List>
-        <ListItem
-          key="1"
+        <CardItem 
+          button
           onPress={() => this.props.navigation.navigate("PasienPage")} >
-          <Text>Daftar Pasien</Text>
-        </ListItem>
-      </List>
+          <Left><Text>Daftar Pasien</Text></Left>
+          <Right><Icon active name="ios-arrow-forward"/></Right>
+        </CardItem>
     );
     
     let selectedCard;
@@ -75,11 +74,7 @@ class Home extends React.Component<Props, State> {
                 <Text>{this.props.authUser}</Text>
               </Body>
             </CardItem>
-            <CardItem>
-              <Body>
-                  {selectedCard}                 
-              </Body>
-            </CardItem>
+            {selectedCard}                 
           </Card>
         </Content>
       </Container>

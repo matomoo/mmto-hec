@@ -12,10 +12,7 @@ export interface Props {
 export interface State {}
 class PasienPage extends React.Component<Props, State> {
 	render() {
-		//const param = this.props.navigation.state.params;
-		console.log(this.props.lists);
-
-		
+		//console.log(this.props.lists);
 
 		return (
 			<Container style={styles.container}>
@@ -36,19 +33,6 @@ class PasienPage extends React.Component<Props, State> {
 				<Content padder>
 					<Text>Berisikan daftar pasien</Text>
 					{ !!this.props.lists && <PasienList users={this.props.lists} /> }
-					{/* <List>
-						{this.props.lists.map((item, i) => (
-							<ListItem
-							key={i}
-							onPress={() =>
-								this.props.navigation.navigate("BlankPage", {
-								name: { item }
-								})}
-							>
-							<Text>{item}</Text>
-							</ListItem>
-						))}
-						</List> */}
 				</Content>
 			</Container>
 		);
@@ -58,9 +42,13 @@ class PasienPage extends React.Component<Props, State> {
 const PasienList = ({users}) => (
 	<List>
 		{Object.keys(users).map(key =>
-			<ListItem key={key}><Text>{users[key].username}</Text></ListItem>
+			<ListItem key={key}>
+				<Left><Text>{users[key].username}</Text></Left>
+				<Right><Icon active name="ios-arrow-forward"/></Right>
+			</ListItem>
+						
 		)}
-	  </List>
+	</List>
 )
 
 export default PasienPage;
