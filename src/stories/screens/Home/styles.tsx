@@ -8,6 +8,9 @@ const styles: any = StyleSheet.create({
 		flex: 1,
 		alignItems: "center",
 	},
+	content: {
+		margin: 10
+	},
 	text: {
 		fontSize: 20,
 		marginBottom: 15,

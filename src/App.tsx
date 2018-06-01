@@ -10,6 +10,7 @@ import Home from "./container/HomeContainer";
 import BlankPage from "./container/BlankPageContainer";
 import Sidebar from "./container/SidebarContainer";
 import DaftarUser from "./container/DaftarUserContainer";
+import PasienPage from "./container/PasienPageContainer";
 
 const Drawer = DrawerNavigator(
 	{
@@ -26,6 +27,7 @@ const App = StackNavigator(
 	{
 		Login: { screen: Login },
 		DaftarUser: { screen: DaftarUser },
+		PasienPage: { screen: PasienPage },
 		BlankPage: { screen: BlankPage },
 		Drawer: { screen: Drawer },
 	},

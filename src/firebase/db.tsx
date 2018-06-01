@@ -13,6 +13,11 @@ export const onceGetUsers = () => {
     db.ref('users').once('value');
 };
 
+export const GetAllPasien = () => {
+    const getter = db.ref('users').once('value');
+    return getter;
+};
+
 export const GetSingleUsers = (uid) => {
     const resUser = db.ref(`users/${uid}`).once('value')
     // .then(snapshot => {

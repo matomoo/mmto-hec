@@ -38,7 +38,7 @@ class Home extends React.Component<Props, State> {
       <List>
         <ListItem
           key="1"
-          >
+          onPress={() => this.props.navigation.navigate("PasienPage")} >
           <Text>Daftar Pasien</Text>
         </ListItem>
       </List>
@@ -68,7 +68,7 @@ class Home extends React.Component<Props, State> {
           </Body>
           <Right />
         </Header>
-        <Content>
+        <Content style={styles.content} >
           <Card>
             <CardItem header>
               <Body>
