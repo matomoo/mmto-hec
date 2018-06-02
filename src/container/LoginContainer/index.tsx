@@ -32,8 +32,12 @@ export default class LoginContainer extends React.Component<Props, State> {
 				})
 				.catch(error => {
 					this.props.loginForm.responseFirebase = error.message;
-					console.log(this.props.loginForm.responseFirebase);
-					//this.props.loginForm.isValid = false;
+					Toast.show({
+						text: error.message,
+						duration: 2000,
+						position: "top",
+						textStyle: { textAlign: "center" },
+					});
 				});
 		} else {
 			Toast.show({

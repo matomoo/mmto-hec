@@ -9,10 +9,10 @@ export interface Props {
 	navigation: any;
 }
 export interface State {}
-class PilihTindakanPage extends React.Component<Props, State> {
+class RekamMedikPasienPage extends React.Component<Props, State> {
 	render() {
-		const param = this.props.navigation.state.params;
-		console.log(param.name.key);
+		const key = this.props.navigation.state.params.name.key;
+		//console.log(key);
 		return (
 			<Container style={styles.container}>
 				<Header>
@@ -23,16 +23,19 @@ class PilihTindakanPage extends React.Component<Props, State> {
 					</Left>
 
 					<Body style={{ flex: 3 }}>
-						<Title>Pilih Tindakan</Title>
+						<Title>Profil Pasien</Title>
 					</Body>
 
 					<Right />
 				</Header>
 
 				<Content padder>
-					<Text>{param.name.item}</Text>
+					<Text>{key}</Text>
 					<List>
-						<ListItem>
+						<ListItem
+							key="1"
+							onPress={() => this.props.navigation.navigate("InputAnalysis", {name : {key}} )}
+						>
 							<Left><Text>Input Analysis</Text></Left>
 							<Right><Icon active name="ios-arrow-forward"/></Right>
 						</ListItem>
@@ -47,4 +50,4 @@ class PilihTindakanPage extends React.Component<Props, State> {
 	}
 }
 
-export default PilihTindakanPage;
+export default RekamMedikPasienPage;

@@ -1,36 +1,52 @@
 import * as React from "react";
-import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Body } from "native-base";
-
+import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Body,
+			//Card,
+			//Form,
+			//Textarea,
+			//Item,
+			//Input,
+			//Label
+} from "native-base";
 import styles from "./styles";
+
 export interface Props {
-	navigation: any;
+	onSimpan: Function;
+	navigationBack: Function;
+	inputAnalysisForm: any;
 }
 export interface State {}
-class BlankPage extends React.Component<Props, State> {
+
+class InputAnalysisPage extends React.Component<Props, State> {
 	render() {
-		const param = this.props.navigation.state.params;
+		//const param = this.props.navigation.state.params.name.key;
+		
 		return (
 			<Container style={styles.container}>
 				<Header>
 					<Left>
-						<Button transparent onPress={() => this.props.navigation.goBack()}>
+						<Button transparent onPress={() => this.props.navigationBack()}>
 							<Icon name="ios-arrow-back" />
 						</Button>
 					</Left>
-
-					<Body style={{ flex: 3 }}>
-						<Title>{param ? param.name.item : "Blank Page"}</Title>
-					</Body>
-
+						<Body style={{ flex: 3 }}>
+							<Title>Input Analysis</Title>
+						</Body>
 					<Right />
 				</Header>
 
-				<Content padder>
-					<Text>{param !== undefined ? param.name.item : "Create Something Awesome . . ."}</Text>
+				<Content>
+					{this.props.inputAnalysisForm}
+						<Button 
+							block	
+							style={styles.Item}
+							onPress={() => this.props.onSimpan()}
+							>
+							<Text>Simpan</Text>
+						</Button>
 				</Content>
 			</Container>
 		);
 	}
 }
 
-export default BlankPage;
+export default InputAnalysisPage;

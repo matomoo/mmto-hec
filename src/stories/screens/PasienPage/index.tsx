@@ -47,7 +47,7 @@ const PasienList = ({users, navigation}) => (
 		{Object.keys(users).map(key =>
 			<ListItem 
 				key={key}
-				onPress={() => navigation.navigate("PilihTindakan", {name: {key}} )}
+				onPress={() => navigation.navigate("RekamMedikPasien", {name: {key}} )}
 				>
 				<Left><Text>{users[key].username}</Text></Left>
 				<Right><Icon active name="ios-arrow-forward"/></Right>
