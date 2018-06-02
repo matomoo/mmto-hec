@@ -4,10 +4,9 @@ class PasienStore {
   @observable hasErrored = false;
   @observable isLoading = true;
   @observable itemsPasien = {};
-  @observable currentUid = "";
-  @observable currentUsername = "";
-  @observable currentUserRole = "";
-
+  @observable currentPasienUid = "";
+  @observable currentPasienUsername = "";
+  
   @action
   fetchItems(data) {
     this.itemsPasien = data;

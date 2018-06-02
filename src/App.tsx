@@ -11,6 +11,7 @@ import BlankPage from "./container/BlankPageContainer";
 import Sidebar from "./container/SidebarContainer";
 import DaftarUser from "./container/DaftarUserContainer";
 import PasienPage from "./container/PasienPageContainer";
+import PilihTindakan from "./container/PilihTindakanPageContainer";
 
 const Drawer = DrawerNavigator(
 	{
@@ -29,6 +30,7 @@ const App = StackNavigator(
 		DaftarUser: { screen: DaftarUser },
 		PasienPage: { screen: PasienPage },
 		BlankPage: { screen: BlankPage },
+		PilihTindakan: {screen: PilihTindakan},
 		Drawer: { screen: Drawer },
 	},
 	{
