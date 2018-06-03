@@ -10,9 +10,16 @@ export const doCreateUser = promisify(( id, username, email, role ) => {
 });
 
 export const doSimpanPasien = ( id, tanggalPeriksa, hasilAnalysis ) => {
-    db.ref(`pasiens/${id}`).set({
+    db.ref(`pasiens/${id}/riwayatAnalysis`).set({
         tanggalPeriksa,
         hasilAnalysis
+    });
+};
+
+export const doSimpanObatPasien = ( id, tanggalPeriksa, hasilObat ) => {
+    db.ref(`pasiens/${id}/riwayatObat`).set({
+        tanggalPeriksa,
+        hasilObat
     });
 };
 

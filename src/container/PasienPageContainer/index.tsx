@@ -16,6 +16,8 @@ export default class PasienPageContainer extends React.Component<Props, State> {
 	componentWillMount() {
 		db.GetAllPasien().then(snapshot => {
 			this.props.pasienStore.itemsPasien = snapshot.val() ;
+			// console.log("Daftar Pasien");
+			// console.log(this.props);
 		});
 	}
 

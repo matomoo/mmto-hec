@@ -1,18 +1,23 @@
 import * as React from "react";
 import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Body,
 			List,
-			ListItem
+			ListItem,
+			Card,
+			CardItem
 } from "native-base";
+
 
 import styles from "./styles";
 export interface Props {
 	navigation: any;
+	pasienTerpilih: any;
 }
 export interface State {}
 class RekamMedikPasienPage extends React.Component<Props, State> {
 	render() {
 		const key = this.props.navigation.state.params.name.key;
-		//console.log(key);
+		//console.log("Rekam Medik Pasien Screen");
+		//console.log(this.props);
 		return (
 			<Container style={styles.container}>
 				<Header>
@@ -30,20 +35,34 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 				</Header>
 
 				<Content padder>
-					<Text>{key}</Text>
-					<List>
-						<ListItem
-							key="1"
-							onPress={() => this.props.navigation.navigate("InputAnalysis", {name : {key}} )}
-						>
-							<Left><Text>Input Analysis</Text></Left>
-							<Right><Icon active name="ios-arrow-forward"/></Right>
-						</ListItem>
-						<ListItem>
-							<Left><Text>Input Obat</Text></Left>
-							<Right><Icon active name="ios-arrow-forward"/></Right>
-						</ListItem>
-					</List>
+					<Card>
+						<CardItem>
+							<Left>
+								<Text>{this.props.pasienTerpilih.value.username}</Text>
+							</Left>
+						</CardItem>
+						<CardItem>
+							<Text>Riwayat Rekam Medik</Text>
+						</CardItem>
+					</Card>
+					<Card>	
+						<List>
+							<ListItem
+								key="1"
+								onPress={() => this.props.navigation.navigate("InputAnalysis", {name : {key}} )}
+							>
+								<Left><Text>Input Analysis</Text></Left>
+								<Right><Icon active name="ios-arrow-forward"/></Right>
+							</ListItem>
+							<ListItem
+								key="2"
+								onPress={() => this.props.navigation.navigate("InputObat", {name : {key}} )}
+							>
+								<Left><Text>Input Obat</Text></Left>
+								<Right><Icon active name="ios-arrow-forward"/></Right>
+							</ListItem>
+						</List>
+					</Card>
 				</Content>
 			</Container>
 		);

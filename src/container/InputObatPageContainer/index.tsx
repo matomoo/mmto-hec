@@ -4,7 +4,7 @@ import { Item, Input, Form, Label,
 			Text
 			} from "native-base";
 import { observer, inject } from "mobx-react/native";
-import InputAnalysisPage from "../../stories/screens/InputAnalysisPage";
+import InputObatPage from "../../stories/screens/InputObatPage";
 import { db } from "../../firebase";
 //import Moment from "react-moment";
 import moment from "moment";
@@ -18,20 +18,21 @@ export interface State {}
 
 @inject("pasienStore")
 @observer
-export default class InputAnalysisPageContainer extends React.Component<Props, State> {
-	analysisInput: any
+export default class InputObatPageContainer extends React.Component<Props, State> {
+	obatInput: any
 
 	constructor(props){
 		super(props);
 		props.pasienStore.currentPasienUid = props.navigation.state.params.name.key;
-		// console.log("Input Analysis Container");
-		// console.log(props);
+		console.log("Input Obat Container");
+		console.log(props);
 	}
 	
 	onSimpanKeTabelPasien = () => {
 		const dateToFormat = new Date();
-		db.doSimpanPasien(this.props.pasienStore.currentPasienUid, moment(dateToFormat).format("LLL"), this.props.pasienStore.analysis);
-		//this.props.navigation.navigate("RekamMedikPasien");
+		db.doSimpanObatPasien(this.props.pasienStore.currentPasienUid, moment(dateToFormat).format("LLL"), this.props.pasienStore.obat);
+		//const key = this.props.pasienStore.currentPasienUid;
+		//this.props.navigation.navigate("RekamMedikPasien", {name: {key}});
 		this.props.navigation.goBack();
 	}
 
@@ -55,10 +56,10 @@ export default class InputAnalysisPageContainer extends React.Component<Props, S
 					stackedLabel 
 					bordered
 					>
-					<Label>Input Analysis</Label>
+					<Label>Input Obat</Label>
 					<Input
-						ref={c => (this.analysisInput = c)}
-						onChangeText={e => form.analysisOnChange(e)}
+						ref={c => (this.obatInput = c)}
+						onChangeText={e => form.obatOnChange(e)}
 						multiline={true}							
 						numberOfLines={10}
 						style={{ height: 200, marginLeft: 10, marginTop: 10, textAlignVertical: "top" }}
@@ -66,8 +67,8 @@ export default class InputAnalysisPageContainer extends React.Component<Props, S
 				</Item>
 			</Form>
 		)
-		return <InputAnalysisPage 
-					inputAnalysisForm={Fields}
+		return <InputObatPage 
+					inputObatForm={Fields}
 					navigationBack={this.onNavigationBack} 
 					onSimpan={this.onSimpanKeTabelPasien}
 					/>;
