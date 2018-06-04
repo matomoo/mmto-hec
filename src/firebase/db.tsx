@@ -10,15 +10,13 @@ export const doCreateUser = promisify(( id, username, email, role ) => {
 });
 
 export const doSimpanPasien = ( id, tanggalPeriksa, hasilAnalysis ) => {
-    db.ref(`pasiens/${id}/riwayatAnalysis`).set({
-        tanggalPeriksa,
+    db.ref(`pasiens/${id}/${tanggalPeriksa}`).update({
         hasilAnalysis
     });
 };
 
 export const doSimpanObatPasien = ( id, tanggalPeriksa, hasilObat ) => {
-    db.ref(`pasiens/${id}/riwayatObat`).set({
-        tanggalPeriksa,
+    db.ref(`pasiens/${id}/${tanggalPeriksa}`).update({
         hasilObat
     });
 };
@@ -29,6 +27,11 @@ export const onceGetUsers = () => {
 
 export const GetAllPasien = () => {
     const getter = db.ref('users').once('value');
+    return getter;
+};
+
+export const GetRekamMedikPasien = (uid) => {
+    const getter = db.ref(`pasiens/${uid}`).once('value');
     return getter;
 };
 

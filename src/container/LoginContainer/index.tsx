@@ -23,12 +23,12 @@ export default class LoginContainer extends React.Component<Props, State> {
 		if (this.props.loginForm.isValid) {
 			auth.doSignInWithEmailAndPassword(this.props.loginForm.email, this.props.loginForm.password)
 				.then((authUser) => {
-					//this.isValid = true;
+					// this.isValid = true;
 					this.props.mainStore.currentUid = authUser.user.uid;
 					this.props.loginForm.clearStore();
 					this.props.navigation.navigate("Drawer");
-					//console.log(authUser.user.uid);
-					
+					// console.log(authUser.user.uid);
+
 				})
 				.catch(error => {
 					this.props.loginForm.responseFirebase = error.message;
@@ -48,7 +48,7 @@ export default class LoginContainer extends React.Component<Props, State> {
 			});
 		}
 	}
-	signup(){
+	signup() {
 		this.props.navigation.navigate("DaftarUser");
 	}
 	render() {
@@ -79,9 +79,9 @@ export default class LoginContainer extends React.Component<Props, State> {
 				</Item>
 			</Form>
 		);
-		return <Login 
-			loginForm={Fields} 
-			onLogin={() => this.login()} 
+		return <Login
+			loginForm={Fields}
+			onLogin={() => this.login()}
 			onSignUp={() => this.signup()}
 		/>;
 	}

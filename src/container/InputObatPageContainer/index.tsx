@@ -24,13 +24,13 @@ export default class InputObatPageContainer extends React.Component<Props, State
 	constructor(props){
 		super(props);
 		props.pasienStore.currentPasienUid = props.navigation.state.params.name.key;
-		console.log("Input Obat Container");
-		console.log(props);
+		// console.log("Input Obat Container");
+		// console.log(props);
 	}
 	
 	onSimpanKeTabelPasien = () => {
 		const dateToFormat = new Date();
-		db.doSimpanObatPasien(this.props.pasienStore.currentPasienUid, moment(dateToFormat).format("LLL"), this.props.pasienStore.obat);
+		db.doSimpanObatPasien(this.props.pasienStore.currentPasienUid, moment(dateToFormat).format("DD-MMM-YYYY"), this.props.pasienStore.obat);
 		//const key = this.props.pasienStore.currentPasienUid;
 		//this.props.navigation.navigate("RekamMedikPasien", {name: {key}});
 		this.props.navigation.goBack();

@@ -3,7 +3,7 @@ import { Platform } from "react-native";
 import { Container, Content, Header, Body, Button, Text, View, Footer } from "native-base";
 import { Image } from "react-native";
 
-//import styles from "./styles";
+// import styles from "./styles";
 export interface Props {
 	loginForm: any;
 	onLogin: Function;
@@ -33,7 +33,7 @@ class Login extends React.Component<Props, State> {
 						<Button block onPress={() => this.props.onSignUp()}>
 							<Text>Daftar User</Text>
 						</Button>
-					</View>				
+					</View>
 				</Content>
 				<Footer style={{ backgroundColor: "#F8F8F8" }}>
 					<View style={{ alignItems: "center", opacity: 0.5, flexDirection: "row" }}>

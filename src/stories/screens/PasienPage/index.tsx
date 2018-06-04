@@ -1,19 +1,21 @@
 import * as React from "react";
 import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Body,
 			List,
-			ListItem,			
-			Card
+			ListItem,
+			Card,
 } from "native-base";
 
 import styles from "./styles";
 export interface Props {
 	navigation: any;
 	lists: any;
+	onPilihPasien: Function;
 }
 export interface State {}
 class PasienPage extends React.Component<Props, State> {
+
 	render() {
-		//console.log(this.props.lists);
+		// console.log(this.props);
 
 		return (
 			<Container style={styles.container}>
@@ -34,7 +36,20 @@ class PasienPage extends React.Component<Props, State> {
 				<Content padder>
 					<Card>
 					{/* <Text>Berisikan daftar pasien</Text> */}
-					{ !!this.props.lists && <PasienList users={this.props.lists} navigation={this.props.navigation} /> }
+					{ !!this.props.lists &&
+						<List>
+						{Object.keys(this.props.lists).map(key =>
+							<ListItem
+								key={key}
+								onPress={() => this.props.navigation.navigate("RekamMedikPasien", {name: {key}} )}
+								>
+								<Left><Text>{this.props.lists[key].username}</Text></Left>
+								<Left><Text>{this.props.lists[key].role}</Text></Left>
+								<Right><Icon active name="ios-arrow-forward"/></Right>
+							</ListItem>,
+						)}
+					</List>
+					}
 					</Card>
 				</Content>
 			</Container>
@@ -42,18 +57,21 @@ class PasienPage extends React.Component<Props, State> {
 	}
 }
 
-const PasienList = ({users, navigation}) => (
-	<List>
-		{Object.keys(users).map(key =>
-			<ListItem 
-				key={key}
-				onPress={() => navigation.navigate("RekamMedikPasien", {name: {key}} )}
-				>
-				<Left><Text>{users[key].username}</Text></Left>
-				<Right><Icon active name="ios-arrow-forward"/></Right>
-			</ListItem>
-		)}
-	</List>
-)
+// const PasienList = ({users}) => {
+// 	console.log(this.props);
+// 	return (
+// 	<List>
+// 		{Object.keys(users).map(key =>
+// 			<ListItem
+// 				key={key}
+// 				onPress={() => this.onPilihPasien(key)  }
+// 				>
+// 				<Left><Text>{users[key].username}</Text></Left>
+// 				<Right><Icon active name="ios-arrow-forward"/></Right>
+// 			</ListItem>,
+// 		)}
+// 	</List>
+// );
+// };
 
 export default PasienPage;
