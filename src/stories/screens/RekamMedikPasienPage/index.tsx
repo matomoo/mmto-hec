@@ -5,7 +5,7 @@ import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Bod
 			Card,
 			CardItem,
 } from "native-base";
-import _ from "lodash";
+// import _ from "lodash";
 
 import styles from "./styles";
 export interface Props {
@@ -20,8 +20,8 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 		const aa = (this.props.pasienRekamMedik);
 		// const array = Object.keys(aa).map(function(k) { return obj[k] });
 
-		console.log("Rekam Medik Pasien Screen");
-		console.log( aa );
+		// console.log("Rekam Medik Pasien Screen");
+		// console.log( aa );
 
 		return (
 			<Container style={styles.container}>
@@ -50,8 +50,7 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 					<Card>
 							{ !!aa &&
 								<List>
-								{Object.keys(aa).map(keyx1 => // {Object.keys(aa[keyx1]).map(keyx2 =>
-										// <Text>{keyx1}</Text>,
+								{Object.keys(aa).map(keyx1 =>
 										<ListItem
 											key={keyx1}
 											>

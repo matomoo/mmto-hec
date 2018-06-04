@@ -5,7 +5,7 @@ import { db } from "../../firebase";
 
 import RekamMedikPasienPage from "../../stories/screens/RekamMedikPasienPage";
 export interface Props {
-	navigation: any,
+	navigation: any;
 	pasienStore: any;
 }
 
@@ -44,12 +44,12 @@ export default class RekamMedikPasienPageContainer extends React.Component<Props
 				);
 		// console.log(this.props.navigation.state.params.name.key)
 		// console.log(this.props.navigation.state.params.name.key);
-		// this.props.pasienStore.currentPasienUsername = objPasienTerpilih.value.username;
-		// this.props.pasienStore.currentPasienUid = this.props.navigation.state.params.name.key
+		this.props.pasienStore.currentPasienUsername = objPasienTerpilih.value.username;
+		this.props.pasienStore.currentPasienUid = this.props.navigation.state.params.name.key;
 
-		// console.log(this.props.pasienStore.itemsRekamMedikPasien);
-		// console.log("Rekam Medik Pasien Container - Render");
-		// console.log(this.props.pasienStore.itemsRekamMedikPasien);
+		console.log("Rekam Medik Pasien Container - Render");
+		console.log(objPasienTerpilih);
+		// console.log(this.props.pasienStore);
 
 		return <RekamMedikPasienPage
 					navigation={this.props.navigation}
