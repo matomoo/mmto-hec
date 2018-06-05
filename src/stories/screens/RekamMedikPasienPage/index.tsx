@@ -8,10 +8,13 @@ import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Bod
 // import _ from "lodash";
 
 import styles from "./styles";
+
 export interface Props {
 	navigation: any;
 	pasienUsername: any;
 	pasienRekamMedik: any;
+	userRole: any;
+	onSimpanPasienKeDaftarPeriksa: Function;
 }
 export interface State {}
 class RekamMedikPasienPage extends React.Component<Props, State> {
@@ -22,6 +25,48 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 
 		// console.log("Rekam Medik Pasien Screen");
 		// console.log( this.props.pasienUsername );
+
+		const menuResepsionis = (
+			<List>
+				<ListItem
+					key="3"
+					onPress={() => this.props.onSimpanPasienKeDaftarPeriksa() }
+					>
+					<Left><Text>Input Ke Daftar Periksa</Text></Left>
+					<Right><Icon active name="ios-arrow-forward"/></Right>
+				</ListItem>
+			</List>
+		);
+
+		const menuDokter = (
+			<List>
+				<ListItem
+					key="1"
+					onPress={() => this.props.navigation.navigate("InputAnalysis", {name : {key}} )}
+					>
+					<Left><Text>Input Diagnosa</Text></Left>
+					<Right><Icon active name="ios-arrow-forward"/></Right>
+				</ListItem>
+				<ListItem
+					key="2"
+					onPress={() => this.props.navigation.navigate("InputObat", {name : {key}} )}
+					>
+					<Left><Text>Input Obat</Text></Left>
+					<Right><Icon active name="ios-arrow-forward"/></Right>
+				</ListItem>
+			</List>
+		);
+
+		let selectedCard;
+		if (this.props.userRole === "admin") {
+			// selectedCard = cardAdmin;
+		} else if (this.props.userRole === "dokter") {
+			selectedCard = menuDokter;
+		} else if (this.props.userRole === "pasien") {
+			// selectedCard = cardPasien;
+		} else if (this.props.userRole === "resepsionis") {
+			selectedCard = menuResepsionis;
+		}
 
 		return (
 			<Container style={styles.container}>
@@ -50,36 +95,20 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 						</CardItem>
 					</Card>
 					<Card>
-							{ !!aa &&
-								<List>
-								{Object.keys(aa).map(keyx1 =>
-										<ListItem
-											key={keyx1}
-											>
-											<Left><Text>{keyx1}</Text></Left>
-										</ListItem>,
-									// )}
-								)}
-								</List>
-							}
+						{ !!aa &&
+							<List>
+							{Object.keys(aa).map(keyx1 =>
+									<ListItem
+										key={keyx1}
+										>
+										<Left><Text>{keyx1}</Text></Left>
+									</ListItem>,
+							)}
+							</List>
+						}
 					</Card>
 					<Card>
-						<List>
-							<ListItem
-								key="1"
-								onPress={() => this.props.navigation.navigate("InputAnalysis", {name : {key}} )}
-								>
-								<Left><Text>Input Diagnosa</Text></Left>
-								<Right><Icon active name="ios-arrow-forward"/></Right>
-							</ListItem>
-							<ListItem
-								key="2"
-								onPress={() => this.props.navigation.navigate("InputObat", {name : {key}} )}
-								>
-								<Left><Text>Input Obat</Text></Left>
-								<Right><Icon active name="ios-arrow-forward"/></Right>
-							</ListItem>
-						</List>
+						{selectedCard}
 					</Card>
 				</Content>
 			</Container>

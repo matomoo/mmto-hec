@@ -1,32 +1,35 @@
 import { observable, action } from "mobx";
 
 class PasienStore {
-  @observable hasErrored = false;
-  @observable isLoading = true;
-  @observable itemsPasien = {};
-  @observable itemsRekamMedikPasien = {};
-  @observable currentPasienUid = "";
-  @observable currentPasienUsername = "";
-  @observable analysis = "";
-  @observable obat = "";
-  
-  @action
-  fetchItems(data) {
-    this.itemsPasien = data;
-    this.isLoading = false;
-  }
+	@observable hasErrored = false;
+	@observable isLoading = true;
+	@observable itemsPasien = {};
+	@observable itemsRekamMedikPasien = {};
+	@observable currentPasienUid = "";
+	@observable currentPasienUsername = "";
+	@observable currentPasienRole = "";
+	@observable currentPasienTerpilihUid = "";
+	@observable currentPasienTerpilihUsername = "";
+	@observable analysis = "";
+	@observable obat = "";
 
-  @action
-  analysisOnChange(param) {
-    this.analysis = param;
-    //this.validateEmail();
-  }
+	@action
+	fetchItems(data) {
+		this.itemsPasien = data;
+		this.isLoading = false;
+	}
 
-  @action
-  obatOnChange(param) {
-    this.obat = param;
-    //this.validateEmail();
-  }
+	@action
+	analysisOnChange(param) {
+		this.analysis = param;
+		// this.validateEmail();
+	}
+
+	@action
+	obatOnChange(param) {
+		this.obat = param;
+		// this.validateEmail();
+	}
 
 }
 

@@ -38,7 +38,7 @@ class Home extends React.Component<Props, State> {
 				<CardItem
 					button
 					onPress={() => this.props.navigation.navigate("PasienPage")} >
-					<Left><Text>Daftar Pasien</Text></Left>
+					<Left><Text>Daftar Pasien Periksa</Text></Left>
 					<Right><Icon active name="ios-arrow-forward"/></Right>
 				</CardItem>
 		);

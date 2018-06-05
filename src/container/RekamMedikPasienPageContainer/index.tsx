@@ -7,11 +7,12 @@ import RekamMedikPasienPage from "../../stories/screens/RekamMedikPasienPage";
 export interface Props {
 	navigation: any;
 	pasienStore: any;
+	mainStore: any;
 }
 
 export interface State {}
 
-@inject ("pasienStore")
+@inject ("pasienStore", "mainStore")
 @observer
 export default class RekamMedikPasienPageContainer extends React.Component<Props, State> {
 	constructor(props) {
@@ -39,23 +40,33 @@ export default class RekamMedikPasienPageContainer extends React.Component<Props
 					{key : this.props.navigation.state.params.name.key},
 				);
 		// console.log(this.props.navigation.state.params.name.key)
-		// console.log(this.props.navigation.state.params.name.key);
-		this.props.pasienStore.currentPasienUsername = objPasienTerpilih.value.username;
-		this.props.pasienStore.currentPasienUid = this.props.navigation.state.params.name.key;
+		// console.log(objPasienTerpilih);
+		this.props.pasienStore.currentPasienTerpilihUsername = objPasienTerpilih.value.username;
+		this.props.pasienStore.currentPasienTerpilihUid = this.props.navigation.state.params.name.key;
+		// this.props.pasienStore.currentPasienRole = objPasienTerpilih.value.role;
+	}
 
+	simpanPasienKeDaftarPeriksa() {
+		db.doSimpanDaftarTunggu(this.props.navigation.state.params.name.key, this.props.pasienStore.currentPasienTerpilihUsername);
+		this.props.navigation.navigate("PasienPage");
+		// console.log(this.props.navigation.state.params.name.key);
+		// console.log(this.props);
 	}
 
 	render() {
 
-		console.log("Rekam Medik Pasien Container - Render");
+		// console.log("Rekam Medik Pasien Container - Render");
 		// console.log(objPasienTerpilih);
 		// console.log(this.props.pasienStore);
-		const { currentPasienUsername } = this.props.pasienStore;
+		const { currentPasienTerpilihUsername } = this.props.pasienStore;
+		const { currentUserRole } = this.props.mainStore;
 
 		return <RekamMedikPasienPage
 					navigation={this.props.navigation}
-					pasienUsername = {currentPasienUsername}
+					pasienUsername = {currentPasienTerpilihUsername}
 					pasienRekamMedik = {this.props.pasienStore.itemsRekamMedikPasien ? this.props.pasienStore.itemsRekamMedikPasien : undefined }
+					userRole = {currentUserRole}
+					onSimpanPasienKeDaftarPeriksa = {() => this.simpanPasienKeDaftarPeriksa()}
 					/>;
 		// return <RekamMedikPasienPage
 		// 			navigation={this.props.navigation}

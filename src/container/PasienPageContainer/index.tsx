@@ -6,19 +6,28 @@ import { db } from "../../firebase";
 export interface Props {
 	navigation: any;
 	pasienStore: any;
+	mainStore: any;
 }
 export interface State {}
 
-@inject ("pasienStore")
+@inject ("pasienStore", "mainStore")
 @observer
 export default class PasienPageContainer extends React.Component<Props, State> {
 
 	componentWillMount() {
-		db.GetAllPasien("pasien").then(snapshot => {
-			this.props.pasienStore.itemsPasien = snapshot.val() ;
-			// console.log("Daftar Pasien - will mount");
-			// console.log(this.props);
-		});
+		// console.log(this.props.mainStore.currentUserRole);
+		const { currentUserRole } = this.props.mainStore;
+		if (currentUserRole === "dokter") {
+			db.GetPasienDaftarPeriksa().then(snapshot => {
+				this.props.pasienStore.itemsPasien = snapshot.val();
+				});
+		} else if (currentUserRole === "resepsionis") {
+			db.GetAllPasien("pasien").then(snapshot => {
+				this.props.pasienStore.itemsPasien = snapshot.val() ;
+				// console.log("Daftar Pasien - will mount");
+				// console.log(this.props);
+			});
+		}
 	}
 
 	pilihPasien ( keyx? ) {

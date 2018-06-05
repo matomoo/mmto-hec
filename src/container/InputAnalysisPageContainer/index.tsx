@@ -23,14 +23,14 @@ export default class InputAnalysisPageContainer extends React.Component<Props, S
 
 	constructor(props) {
 		super(props);
-		props.pasienStore.currentPasienUid = props.navigation.state.params.name.key;
+		// props.pasienStore.currentPasienUid = props.navigation.state.params.name.key;
 		// console.log("Input Analysis Container");
 		// console.log(props);
 	}
 
 	onSimpanKeTabelPasien = () => {
 		const dateToFormat = new Date();
-		db.doSimpanPasien(this.props.pasienStore.currentPasienUid, moment(dateToFormat).format("DD-MMM-YYYY"), this.props.pasienStore.analysis);
+		db.doSimpanPasien(this.props.pasienStore.currentPasienTerpilihUid, moment(dateToFormat).format("DD-MMM-YYYY"), this.props.pasienStore.analysis);
 		// this.props.navigation.navigate("RekamMedikPasien");
 		this.props.navigation.goBack();
 	}
@@ -49,7 +49,7 @@ export default class InputAnalysisPageContainer extends React.Component<Props, S
 					bordered
 					>
 						<Label>Nama Pasien</Label>
-						<Text>{form.currentPasienUsername}</Text>
+						<Text>{form.currentPasienTerpilihUsername}</Text>
 				</Item>
 				<Item
 					stackedLabel

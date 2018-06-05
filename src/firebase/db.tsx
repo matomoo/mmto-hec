@@ -21,10 +21,11 @@ export const doSimpanObatPasien = ( id, tanggalPeriksa, hasilObat ) => {
 	});
 };
 
-export const doSimpanDaftarTunggu = ( id ) => {
-	db.ref(`daftarTunggu`).update({
-		id,
+export const doSimpanDaftarTunggu = ( uid, username ) => {
+	const getter = db.ref(`daftarTunggu/${uid}`).update({
+		username,
 	});
+	return getter;
 };
 
 export const onceGetUsers = () => {
@@ -33,6 +34,11 @@ export const onceGetUsers = () => {
 
 export const GetAllPasien = ( param1 ) => {
 	const getter = db.ref(`users`).orderByChild("role").equalTo(`${param1}`).once("value");
+	return getter;
+};
+
+export const GetPasienDaftarPeriksa = () => {
+	const getter = db.ref("daftarTunggu").once("value");
 	return getter;
 };
 

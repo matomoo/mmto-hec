@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Item, Input, Form, Label,
-			//Left,
-			Text
+			// Left,
+			Text,
 			} from "native-base";
 import { observer, inject } from "mobx-react/native";
 import InputObatPage from "../../stories/screens/InputObatPage";
 import { db } from "../../firebase";
-//import Moment from "react-moment";
+// import Moment from "react-moment";
 import moment from "moment";
 
 export interface Props {
@@ -19,20 +19,20 @@ export interface State {}
 @inject("pasienStore")
 @observer
 export default class InputObatPageContainer extends React.Component<Props, State> {
-	obatInput: any
+	obatInput: any;
 
-	constructor(props){
+	constructor(props) {
 		super(props);
 		props.pasienStore.currentPasienUid = props.navigation.state.params.name.key;
 		// console.log("Input Obat Container");
 		// console.log(props);
 	}
-	
+
 	onSimpanKeTabelPasien = () => {
 		const dateToFormat = new Date();
-		db.doSimpanObatPasien(this.props.pasienStore.currentPasienUid, moment(dateToFormat).format("DD-MMM-YYYY"), this.props.pasienStore.obat);
-		//const key = this.props.pasienStore.currentPasienUid;
-		//this.props.navigation.navigate("RekamMedikPasien", {name: {key}});
+		db.doSimpanObatPasien(this.props.pasienStore.currentPasienTerpilihUid, moment(dateToFormat).format("DD-MMM-YYYY"), this.props.pasienStore.obat);
+		// const key = this.props.pasienStore.currentPasienUid;
+		// this.props.navigation.navigate("RekamMedikPasien", {name: {key}});
 		this.props.navigation.goBack();
 	}
 
@@ -42,34 +42,34 @@ export default class InputObatPageContainer extends React.Component<Props, State
 
 	render() {
 		const form = this.props.pasienStore;
-		
+
 		const Fields = (
 			<Form>
-				<Item 
-					stackedLabel 
+				<Item
+					stackedLabel
 					bordered
 					>
 						<Label>Nama Pasien</Label>
-						<Text>{form.currentPasienUsername}</Text>
+						<Text>{form.currentPasienTerpilihUsername}</Text>
 				</Item>
-				<Item 
-					stackedLabel 
+				<Item
+					stackedLabel
 					bordered
 					>
 					<Label>Input Obat</Label>
 					<Input
 						ref={c => (this.obatInput = c)}
 						onChangeText={e => form.obatOnChange(e)}
-						multiline={true}							
+						multiline={true}
 						numberOfLines={10}
 						style={{ height: 200, marginLeft: 10, marginTop: 10, textAlignVertical: "top" }}
 					/>
 				</Item>
 			</Form>
 		)
-		return <InputObatPage 
+		return <InputObatPage
 					inputObatForm={Fields}
-					navigationBack={this.onNavigationBack} 
+					navigationBack={this.onNavigationBack}
 					onSimpan={this.onSimpanKeTabelPasien}
 					/>;
 	}
