@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { observer, inject } from "mobx-react/native";
 import PasienPage from "../../stories/screens/PasienPage";
 import { db } from "../../firebase";
@@ -14,9 +14,9 @@ export interface State {}
 export default class PasienPageContainer extends React.Component<Props, State> {
 
 	componentWillMount() {
-		db.GetAllPasien().then(snapshot => {
+		db.GetAllPasien("pasien").then(snapshot => {
 			this.props.pasienStore.itemsPasien = snapshot.val() ;
-			// console.log("Daftar Pasien");
+			// console.log("Daftar Pasien - will mount");
 			// console.log(this.props);
 		});
 	}

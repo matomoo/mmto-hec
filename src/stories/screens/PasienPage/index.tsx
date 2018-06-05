@@ -38,17 +38,17 @@ class PasienPage extends React.Component<Props, State> {
 					{/* <Text>Berisikan daftar pasien</Text> */}
 					{ !!this.props.lists &&
 						<List>
-						{Object.keys(this.props.lists).map(key =>
-							<ListItem
-								key={key}
-								onPress={() => this.props.navigation.navigate("RekamMedikPasien", {name: {key}} )}
-								>
-								<Left><Text>{this.props.lists[key].username}</Text></Left>
-								<Left><Text>{this.props.lists[key].role}</Text></Left>
-								<Right><Icon active name="ios-arrow-forward"/></Right>
-							</ListItem>,
-						)}
-					</List>
+							{Object.keys(this.props.lists).map(key =>
+								<ListItem
+									key={key}
+									onPress={() => this.props.navigation.navigate("RekamMedikPasien", {name: {key}} )}
+									>
+									<Left><Text>{this.props.lists[key].username}</Text></Left>
+									<Left><Text>{this.props.lists[key].role}</Text></Left>
+									<Right><Icon active name="ios-arrow-forward"/></Right>
+								</ListItem>,
+							)}
+						</List>
 					}
 					</Card>
 				</Content>

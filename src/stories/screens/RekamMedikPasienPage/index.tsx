@@ -10,7 +10,7 @@ import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Bod
 import styles from "./styles";
 export interface Props {
 	navigation: any;
-	pasienTerpilih: any;
+	pasienUsername: any;
 	pasienRekamMedik: any;
 }
 export interface State {}
@@ -21,7 +21,7 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 		// const array = Object.keys(aa).map(function(k) { return obj[k] });
 
 		// console.log("Rekam Medik Pasien Screen");
-		// console.log( aa );
+		// console.log( this.props.pasienUsername );
 
 		return (
 			<Container style={styles.container}>
@@ -43,7 +43,9 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 					<Card>
 						<CardItem>
 							<Left>
-								<Text>{this.props.pasienTerpilih.value.username}</Text>
+								<Text>
+									{this.props.pasienUsername}
+									</Text>
 							</Left>
 						</CardItem>
 					</Card>

@@ -32,10 +32,6 @@ export default class RekamMedikPasienPageContainer extends React.Component<Props
 			// console.log(this.props.pasienStore.currentPasienUid);
 			// console.log(snapshot.val());
 		});
-
-	}
-
-	render() {
 		const arr = _.map( this.props.pasienStore.itemsPasien, (value, key) => ({key, value}) );
 
 		const objPasienTerpilih = _.find(
@@ -47,14 +43,23 @@ export default class RekamMedikPasienPageContainer extends React.Component<Props
 		this.props.pasienStore.currentPasienUsername = objPasienTerpilih.value.username;
 		this.props.pasienStore.currentPasienUid = this.props.navigation.state.params.name.key;
 
+	}
+
+	render() {
+
 		console.log("Rekam Medik Pasien Container - Render");
-		console.log(objPasienTerpilih);
+		// console.log(objPasienTerpilih);
 		// console.log(this.props.pasienStore);
+		const { currentPasienUsername } = this.props.pasienStore;
 
 		return <RekamMedikPasienPage
 					navigation={this.props.navigation}
-					pasienTerpilih = {objPasienTerpilih}
+					pasienUsername = {currentPasienUsername}
 					pasienRekamMedik = {this.props.pasienStore.itemsRekamMedikPasien ? this.props.pasienStore.itemsRekamMedikPasien : undefined }
 					/>;
+		// return <RekamMedikPasienPage
+		// 			navigation={this.props.navigation}
+		// 			pasienRekamMedik = {this.props.pasienStore.itemsRekamMedikPasien ? this.props.pasienStore.itemsRekamMedikPasien : undefined }
+		// />;
 	}
 }
