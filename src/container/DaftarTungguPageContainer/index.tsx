@@ -1,6 +1,6 @@
 import React from "react";
 import { observer, inject } from "mobx-react/native";
-import PasienPage from "../../stories/screens/PasienPage";
+import DaftarTungguPage from "../../stories/screens/DaftarTungguPage";
 import { db } from "../../firebase";
 
 export interface Props {
@@ -12,24 +12,15 @@ export interface State {}
 
 @inject ("pasienStore", "mainStore")
 @observer
-export default class PasienPageContainer extends React.Component<Props, State> {
+export default class DaftarTungguPageContainer extends React.Component<Props, State> {
 
 	componentWillMount() {
 		// console.log(this.props.mainStore.currentUserRole);
-		const { currentUserRole } = this.props.mainStore;
+		// const { currentUserRole } = this.props.mainStore;
 		// const {key} = this.props.navigation.state.params.name ;
-		if (currentUserRole === "dokter") {
-			db.GetPasienDaftarPeriksa().then(snapshot => {
-				this.props.pasienStore.itemsPasien = snapshot.val();
-				});
-		} else if (currentUserRole === "resepsionis" ) {
-			console.log();
-			db.GetAllPasien("pasien").then(snapshot => {
-				this.props.pasienStore.itemsPasien = snapshot.val() ;
-				// console.log("Daftar Pasien - will mount");
-				// console.log(this.props);
-			});
-		}
+		db.GetPasienDaftarPeriksa().then(snapshot => {
+			this.props.pasienStore.itemsPasien = snapshot.val();
+		});
 	}
 
 	pilihPasien ( keyx? ) {
@@ -41,7 +32,7 @@ export default class PasienPageContainer extends React.Component<Props, State> {
 	render() {
 		// console.log(this.props.pasienStore.itemsPasien);
 		let list = this.props.pasienStore.itemsPasien ? this.props.pasienStore.itemsPasien : undefined;
-		return <PasienPage
+		return <DaftarTungguPage
 					navigation={this.props.navigation}
 					lists={list}
 					onPilihPasien={() => this.pilihPasien()}

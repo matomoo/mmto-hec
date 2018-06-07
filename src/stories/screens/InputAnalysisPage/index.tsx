@@ -29,7 +29,7 @@ class InputAnalysisPage extends React.Component<Props, State> {
 						</Button>
 					</Left>
 						<Body style={{ flex: 3 }}>
-							<Title>Input Analysis</Title>
+							<Title>Input Diagnosa</Title>
 						</Body>
 					<Right />
 				</Header>

@@ -12,6 +12,8 @@ import {
 	Right,
 	Card,
 	CardItem,
+	List,
+	ListItem,
 } from "native-base";
 
 import styles from "./styles";
@@ -24,6 +26,7 @@ export interface Props {
 export interface State {}
 class Home extends React.Component<Props, State> {
 	render() {
+		// const key = "canView";
 		const cardAdmin = (
 			<CardItem
 					button
@@ -54,13 +57,22 @@ class Home extends React.Component<Props, State> {
 	);
 
 		const cardResepsionis = (
-			<CardItem
-				button
-				onPress={() => this.props.navigation.navigate("PasienPage")}
-				>
-				<Left><Text>Input Daftar Periksa Pasien</Text></Left>
-				<Right><Icon active name="ios-arrow-forward"/></Right>
-			</CardItem>
+			<List>
+				<ListItem
+					button
+					onPress={() => this.props.navigation.navigate("PasienPage")}
+					>
+					<Left><Text>Input Daftar Tunggu</Text></Left>
+					<Right><Icon active name="ios-arrow-forward"/></Right>
+				</ListItem>
+				<ListItem
+					button
+					onPress={() => this.props.navigation.navigate("DaftarTungguPage")}
+					>
+					<Left><Text>Lihat Daftar Tunggu</Text></Left>
+					<Right><Icon active name="ios-arrow-forward"/></Right>
+				</ListItem>
+			</List>
 	);
 
 		let selectedCard;

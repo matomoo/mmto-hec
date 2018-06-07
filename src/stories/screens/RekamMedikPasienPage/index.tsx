@@ -97,11 +97,13 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 					<Card>
 						{ !!aa &&
 							<List>
+							<ListItem><Text>Riwayat Rekam Medik</Text></ListItem>
 							{Object.keys(aa).map(keyx1 =>
 									<ListItem
 										key={keyx1}
 										>
 										<Left><Text>{keyx1}</Text></Left>
+										<Right><Icon active name="ios-arrow-forward"/></Right>
 									</ListItem>,
 							)}
 							</List>
