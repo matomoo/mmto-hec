@@ -32,7 +32,7 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 					key="3"
 					onPress={() => this.props.onSimpanPasienKeDaftarPeriksa() }
 					>
-					<Left><Text>Input Ke Daftar Periksa</Text></Left>
+					<Left><Text>Input Ke Daftar Tunggu</Text></Left>
 					<Right><Icon active name="ios-arrow-forward"/></Right>
 				</ListItem>
 			</List>
@@ -40,18 +40,25 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 
 		const menuDokter = (
 			<List>
-				<ListItem
+				{/* <ListItem
 					key="1"
 					onPress={() => this.props.navigation.navigate("InputAnalysis", {name : {key}} )}
 					>
 					<Left><Text>Input Diagnosa</Text></Left>
 					<Right><Icon active name="ios-arrow-forward"/></Right>
-				</ListItem>
+				</ListItem> */}
 				<ListItem
 					key="2"
 					onPress={() => this.props.navigation.navigate("InputObat", {name : {key}} )}
 					>
 					<Left><Text>Input Obat</Text></Left>
+					<Right><Icon active name="ios-arrow-forward"/></Right>
+				</ListItem>
+				<ListItem
+					key="3"
+					onPress={() => this.props.navigation.navigate("InputDiagnosa", {name : {key}} )}
+					>
+					<Left><Text>Input Diagnosa 2</Text></Left>
 					<Right><Icon active name="ios-arrow-forward"/></Right>
 				</ListItem>
 			</List>

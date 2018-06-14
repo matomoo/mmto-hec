@@ -1,7 +1,7 @@
 {
   "expo": {
     "sdkVersion": "24.0.0",
-    "slug": "React-Native-Seed",
+    "slug": "Klinik-Mata-Hasanuddin",
     "loading": {
       "hideExponentText": false,
       "icon": "./assets/loading.png"
@@ -15,6 +15,13 @@
     "androidStatusBar": {
       "barStyle": "light-content",
       "backgroundColor": "#334393"
-    }
+    },
+    "splash": {
+      "image": "./assets/HEC_splash.png",
+      "backgroundColor": "#ffffff"
+    },
+    "icon": "./assets/HEC_icon_w1024.png"
+    },
+    "name": "KlinikMataHasanuddin",
+    "displayName": "Klinik Mata Hasanuddin"
   }
-}

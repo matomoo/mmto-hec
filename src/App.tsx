@@ -15,6 +15,7 @@ import RekamMedikPasien from "./container/RekamMedikPasienPageContainer";
 import InputAnalysis from "./container/InputAnalysisPageContainer";
 import InputObat from "./container/InputObatPageContainer";
 import DaftarTungguPage from "./container/DaftarTungguPageContainer";
+import InputDiagnosa from "./container/InputDiagnosaPageContainer";
 
 const Drawer = DrawerNavigator(
 	{
@@ -24,7 +25,7 @@ const Drawer = DrawerNavigator(
 		drawerWidth: deviceWidth - 50,
 		drawerPosition: "left",
 		contentComponent: props => <Sidebar {...props} />,
-	}
+	},
 );
 
 const App = StackNavigator(
@@ -37,12 +38,13 @@ const App = StackNavigator(
 		InputAnalysis: { screen: InputAnalysis },
 		InputObat: { screen: InputObat },
 		DaftarTungguPage: { screen: DaftarTungguPage },
+		InputDiagnosa: { screen: InputDiagnosa },
 		Drawer: { screen: Drawer },
 	},
 	{
 		initialRouteName: "Login",
 		headerMode: "none",
-	}
+	},
 );
 
 export default () => (
