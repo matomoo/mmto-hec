@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Body,
+			Footer,
 			// Card,
 			// Form,
 			// Textarea,
@@ -13,6 +14,7 @@ export interface Props {
 	onSimpan: Function;
 	navigationBack: Function;
 	inputObatForm: any;
+	pilihanObat: any;
 }
 export interface State {}
 
@@ -35,15 +37,19 @@ class InputObatPage extends React.Component<Props, State> {
 				</Header>
 
 				<Content>
-					{this.props.inputObatForm}
+					{this.props.pilihanObat}
+				</Content>
+				<Footer>
+					<Content>
 						<Button
-							block
-							style={styles.Item}
+							full
+							// style={styles.Item}
 							onPress={() => this.props.onSimpan()}
 							>
 							<Text>Simpan</Text>
 						</Button>
-				</Content>
+					</Content>
+				</Footer>
 			</Container>
 		);
 	}

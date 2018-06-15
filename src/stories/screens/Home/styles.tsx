@@ -9,7 +9,7 @@ const styles: any = StyleSheet.create({
 		alignItems: "center",
 	},
 	content: {
-		margin: 10
+		margin: 10,
 	},
 	text: {
 		fontSize: 20,

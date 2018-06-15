@@ -48,17 +48,17 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 					<Right><Icon active name="ios-arrow-forward"/></Right>
 				</ListItem> */}
 				<ListItem
+					key="3"
+					onPress={() => this.props.navigation.navigate("InputDiagnosa", {name : {key}} )}
+					>
+					<Left><Text>Input Diagnosa</Text></Left>
+					<Right><Icon active name="ios-arrow-forward"/></Right>
+				</ListItem>
+				<ListItem
 					key="2"
 					onPress={() => this.props.navigation.navigate("InputObat", {name : {key}} )}
 					>
 					<Left><Text>Input Obat</Text></Left>
-					<Right><Icon active name="ios-arrow-forward"/></Right>
-				</ListItem>
-				<ListItem
-					key="3"
-					onPress={() => this.props.navigation.navigate("InputDiagnosa", {name : {key}} )}
-					>
-					<Left><Text>Input Diagnosa 2</Text></Left>
 					<Right><Icon active name="ios-arrow-forward"/></Right>
 				</ListItem>
 			</List>

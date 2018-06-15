@@ -43,8 +43,8 @@ class PasienPage extends React.Component<Props, State> {
 									key={key}
 									onPress={() => this.props.navigation.navigate("RekamMedikPasien", {name: {key}} )}
 									>
-									<Left><Text>{this.props.lists[key].username}</Text></Left>
-									<Left><Text>{this.props.lists[key].role}</Text></Left>
+									<Left><Text>{this.props.lists[key].profil.username}</Text></Left>
+									<Left><Text>{this.props.lists[key].profil.role}</Text></Left>
 									<Right><Icon active name="ios-arrow-forward"/></Right>
 								</ListItem>,
 							)}

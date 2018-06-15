@@ -18,8 +18,9 @@ export default class DaftarTungguPageContainer extends React.Component<Props, St
 		// console.log(this.props.mainStore.currentUserRole);
 		// const { currentUserRole } = this.props.mainStore;
 		// const {key} = this.props.navigation.state.params.name ;
-		db.GetPasienDaftarPeriksa().then(snapshot => {
+		db.GetLihatDaftarTunggu().then(snapshot => {
 			this.props.pasienStore.itemsPasien = snapshot.val();
+			console.log(snapshot.val());
 		});
 	}
 

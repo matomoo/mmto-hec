@@ -22,11 +22,12 @@ export interface Props {
 	list: any;
 	authUser: any;
 	authRole: any;
+	authUid: any;
 }
 export interface State {}
 class Home extends React.Component<Props, State> {
 	render() {
-		// const key = "canView";
+		const key = this.props.authUid;
 		const cardAdmin = (
 			<CardItem
 					button
@@ -49,7 +50,7 @@ class Home extends React.Component<Props, State> {
 		const cardPasien = (
 			<CardItem
 				button
-				// onPress={() => this.props.navigation.navigate("PasienPage")}
+				onPress={() => this.props.navigation.navigate("RekamMedikPasien", {name: {key}} )}
 				>
 				<Left><Text>Riwayat Rekam Medik</Text></Left>
 				<Right><Icon active name="ios-arrow-forward"/></Right>
@@ -62,7 +63,7 @@ class Home extends React.Component<Props, State> {
 					button
 					onPress={() => this.props.navigation.navigate("PasienPage")}
 					>
-					<Left><Text>Input Daftar Tunggu</Text></Left>
+					<Left><Text>List Daftar Semua Pasien</Text></Left>
 					<Right><Icon active name="ios-arrow-forward"/></Right>
 				</ListItem>
 				<ListItem
@@ -103,13 +104,15 @@ class Home extends React.Component<Props, State> {
 					</Body>
 					<Right />
 				</Header>
-				<Content style={styles.content} >
+				<Content style={styles.content}>
 					<Card>
 						<CardItem header>
 							<Body>
-								<Text>{this.props.authUser}</Text>
+								<Text>Selamat Datang, {this.props.authUser}</Text>
 							</Body>
 						</CardItem>
+					</Card>
+					<Card>
 						{selectedCard}
 					</Card>
 				</Content>

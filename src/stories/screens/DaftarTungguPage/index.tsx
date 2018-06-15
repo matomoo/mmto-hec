@@ -27,7 +27,7 @@ class DaftarTungguPage extends React.Component<Props, State> {
 					</Left>
 
 					<Body style={{ flex: 3 }}>
-						<Title>Daftar Tunggu</Title>
+						<Title>List Daftar Tunggu</Title>
 					</Body>
 
 					<Right />
@@ -41,11 +41,11 @@ class DaftarTungguPage extends React.Component<Props, State> {
 							{Object.keys(this.props.lists).map(key =>
 								<ListItem
 									key={key}
-									onPress={() => this.props.navigation.navigate("RekamMedikPasien", {name: {key}} )}
+									// onPress={() => this.props.navigation.navigate("RekamMedikPasien", {name: {key}} )}
 									>
-									<Left><Text>{this.props.lists[key].username}</Text></Left>
-									<Left><Text>{this.props.lists[key].role}</Text></Left>
-									<Right><Icon active name="ios-arrow-forward"/></Right>
+									<Left><Text>{this.props.lists[key].profil.username}</Text></Left>
+									<Left><Text>{this.props.lists[key].profil.role}</Text></Left>
+									{/* <Right><Icon active name="ios-arrow-forward"/></Right> */}
 								</ListItem>,
 							)}
 						</List>

@@ -19,15 +19,14 @@ export default class PasienPageContainer extends React.Component<Props, State> {
 		const { currentUserRole } = this.props.mainStore;
 		// const {key} = this.props.navigation.state.params.name ;
 		if (currentUserRole === "dokter") {
-			db.GetPasienDaftarPeriksa().then(snapshot => {
+			db.GetLihatDaftarTunggu().then(snapshot => {
 				this.props.pasienStore.itemsPasien = snapshot.val();
 				});
 		} else if (currentUserRole === "resepsionis" ) {
-			console.log();
-			db.GetAllPasien("pasien").then(snapshot => {
+			db.GetAllPasienStatusTungguNOK().then(snapshot => {
 				this.props.pasienStore.itemsPasien = snapshot.val() ;
 				// console.log("Daftar Pasien - will mount");
-				// console.log(this.props);
+				// console.log(this.props.pasienStore.itemsPasien);
 			});
 		}
 	}

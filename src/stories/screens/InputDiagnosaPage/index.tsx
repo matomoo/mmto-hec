@@ -41,13 +41,15 @@ class InputDiagnosaPage extends React.Component<Props, State> {
 					{this.props.pilihanDiagnosa}
 				</Content>
 				<Footer>
-					<Button
-						full
-						// style={styles.Item}
-						onPress={() => this.props.onSimpan()}
-						>
-						<Text>Simpan</Text>
-					</Button>
+					<Content>
+						<Button
+							full
+							// style={styles.Item}
+							onPress={() => this.props.onSimpan()}
+							>
+							<Text>Simpan</Text>
+						</Button>
+					</Content>
 				</Footer>
 
 			</Container>

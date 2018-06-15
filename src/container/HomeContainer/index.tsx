@@ -22,7 +22,7 @@ export default class HomeContainer extends React.Component<Props, State> {
 			this.props.mainStore.currentUserRole = snapshot.val().role;
 			// console.log(this.props.mainStore.currentUsername);
 		});
-		// console.log(db);
+		console.log(this.props);
 
 	}
 	render() {
@@ -32,6 +32,7 @@ export default class HomeContainer extends React.Component<Props, State> {
 			list={list}
 			authUser={this.props.mainStore.currentUsername}
 			authRole={this.props.mainStore.currentUserRole}
+			authUid={this.props.mainStore.currentUid}
 		/>;
 	}
 }

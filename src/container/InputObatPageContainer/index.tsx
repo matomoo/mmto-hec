@@ -1,22 +1,27 @@
 import * as React from "react";
 import { Item, Input, Form, Label,
-			// Left,
 			Text,
+			Content,
+			ListItem,
+			CheckBox,
+			Body,
 			} from "native-base";
 import { observer, inject } from "mobx-react/native";
 import InputObatPage from "../../stories/screens/InputObatPage";
 import { db } from "../../firebase";
 // import Moment from "react-moment";
 import moment from "moment";
+import dataDefaultObat from "./dataDefaultObat";
 
 export interface Props {
 	navigation: any;
 	pasienStore: any;
 	mainStore: any;
+	inputDiagnosaStore: any;
 }
 export interface State {}
 
-@inject("pasienStore")
+@inject("pasienStore", "inputDiagnosaStore")
 @observer
 export default class InputObatPageContainer extends React.Component<Props, State> {
 	obatInput: any;
@@ -28,12 +33,41 @@ export default class InputObatPageContainer extends React.Component<Props, State
 		// console.log(props);
 	}
 
+	toggleSwitch1() {
+		this.props.inputDiagnosaStore.checkbox1 = !this.props.inputDiagnosaStore.checkbox1;
+		// this.props.inputDiagnosaStore.addListItem(dataDefaultObat[0].namaObat );
+		// console.log(this.props.inputDiagnosaStore.selectedDiagnosa);
+		}
+	toggleSwitch2() {
+		this.props.inputDiagnosaStore.checkbox2 = !this.props.inputDiagnosaStore.checkbox2;
+		// this.props.inputDiagnosaStore.addListItem(dataDefaultObat[1].namaObat );
+		// console.log(this.props.inputDiagnosaStore.selectedDiagnosa);
+	}
+	toggleSwitch3() {
+		this.props.inputDiagnosaStore.checkbox3 = !this.props.inputDiagnosaStore.checkbox3;
+		// this.props.inputDiagnosaStore.addListItem(dataDefaultObat[2].namaObat );
+		// console.log(this.props.inputDiagnosaStore.selectedDiagnosa);
+	}
+
 	onSimpanKeTabelPasien = () => {
 		const dateToFormat = new Date();
-		db.doSimpanObatPasien(this.props.pasienStore.currentPasienTerpilihUid, moment(dateToFormat).format("DD-MMM-YYYY"), this.props.pasienStore.obat);
-		// const key = this.props.pasienStore.currentPasienUid;
-		// this.props.navigation.navigate("RekamMedikPasien", {name: {key}});
+		if (this.props.inputDiagnosaStore.checkbox1) {
+			this.props.inputDiagnosaStore.addListItem(dataDefaultObat[0].namaObat );
+		}
+		if (this.props.inputDiagnosaStore.checkbox2) {
+			this.props.inputDiagnosaStore.addListItem(dataDefaultObat[1].namaObat );
+		}
+		if (this.props.inputDiagnosaStore.checkbox3) {
+			this.props.inputDiagnosaStore.addListItem(dataDefaultObat[2].namaObat );
+		}
+		db.doSimpanObatPasien(
+				this.props.pasienStore.currentPasienTerpilihUid,
+				moment(dateToFormat).format("DD-MMM-YYYY"),
+				JSON.stringify(this.props.inputDiagnosaStore.selectedDiagnosa));
+		// console.log(this.props.inputDiagnosaStore.selectedDiagnosa);
 		this.props.navigation.goBack();
+		this.props.inputDiagnosaStore.selectedDiagnosa = [];
+		this.props.inputDiagnosaStore.index = 0;
 	}
 
 	onNavigationBack= () => {
@@ -66,11 +100,46 @@ export default class InputObatPageContainer extends React.Component<Props, State
 					/>
 				</Item>
 			</Form>
-		)
+		);
+
+		const PilihanObat = (
+			<Content>
+				<ListItem button onPress={() => this.toggleSwitch1()}>
+					<CheckBox
+					checked={this.props.inputDiagnosaStore.checkbox1}
+					onPress={() => this.toggleSwitch1()}
+					/>
+					<Body>
+					<Text>{dataDefaultObat[0].namaObat}</Text>
+					</Body>
+				</ListItem>
+				<ListItem button onPress={() => this.toggleSwitch2()}>
+					<CheckBox
+					checked={this.props.inputDiagnosaStore.checkbox2}
+					onPress={() => this.toggleSwitch2()}
+					/>
+					<Body>
+					<Text>{dataDefaultObat[1].namaObat}</Text>
+					</Body>
+				</ListItem>
+				<ListItem button onPress={() => this.toggleSwitch3()}>
+					<CheckBox
+					checked={this.props.inputDiagnosaStore.checkbox3}
+					onPress={() => this.toggleSwitch3()}
+					/>
+					<Body>
+					<Text>{dataDefaultObat[2].namaObat}</Text>
+					</Body>
+				</ListItem>
+			</Content>
+
+		);
+
 		return <InputObatPage
 					inputObatForm={Fields}
 					navigationBack={this.onNavigationBack}
 					onSimpan={this.onSimpanKeTabelPasien}
+					pilihanObat={PilihanObat}
 					/>;
 	}
 }

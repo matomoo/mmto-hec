@@ -2,28 +2,36 @@ import { db } from "./firebase";
 // import { promisify } from "es6-promisify";
 
 export const doCreateUser = ( id, username, email, role ) => {
-	db.ref(`users/${id}`).set({
+	db.ref(`users/${id}`).update({
 		username,
 		email,
 		role,
 	});
+	db.ref(`pasiens/${id}/profil`).update({
+		username,
+		email,
+		role,
+	});
+	db.ref(`pasiens/${id}`).update({
+		daftarTunggu: "nok",
+	});
 };
 
 export const doSimpanPasien = ( id, tanggalPeriksa, hasilAnalysis ) => {
-	db.ref(`pasiens/${id}/${tanggalPeriksa}`).update({
+	db.ref(`pasiens/${id}/rekamMedik/${tanggalPeriksa}`).update({
 		hasilAnalysis,
 	});
 };
 
 export const doSimpanObatPasien = ( id, tanggalPeriksa, hasilObat ) => {
-	db.ref(`pasiens/${id}/${tanggalPeriksa}`).update({
+	db.ref(`pasiens/${id}/rekamMedik/${tanggalPeriksa}`).update({
 		hasilObat,
 	});
 };
 
-export const doSimpanDaftarTunggu = ( uid, username ) => {
-	const getter = db.ref(`daftarTunggu/${uid}`).update({
-		username,
+export const doSimpanDaftarTunggu = ( uid ) => {
+	const getter = db.ref(`pasiens/${uid}`).update({
+		daftarTunggu : "ok",
 	});
 	return getter;
 };
@@ -33,12 +41,17 @@ export const onceGetUsers = () => {
 };
 
 export const GetAllPasien = ( param1 ) => {
-	const getter = db.ref(`users`).orderByChild("role").equalTo(`${param1}`).once("value");
+	const getter = db.ref(`pasiens`).orderByChild("role").equalTo(`${param1}`).once("value");
 	return getter;
 };
 
-export const GetPasienDaftarPeriksa = () => {
-	const getter = db.ref("daftarTunggu").once("value");
+export const GetAllPasienStatusTungguNOK = () => {
+	const getter = db.ref(`pasiens`).orderByChild("daftarTunggu").equalTo("nok").once("value");
+	return getter;
+};
+
+export const GetLihatDaftarTunggu = () => {
+	const getter = db.ref("pasiens").orderByChild("daftarTunggu").equalTo("ok").once("value");
 	return getter;
 };
 
