@@ -27,6 +27,7 @@ export default class RekamMedikPasienPageContainer extends React.Component<Props
 		db.GetRekamMedikPasien(this.props.navigation.state.params.name.key).then(snapshot => {
 			this.props.pasienStore.itemsRekamMedikPasien = snapshot.val() ;
 			this.props.pasienStore.currentPasienTerpilihUsername = this.props.pasienStore.itemsRekamMedikPasien.profil.username;
+			this.props.pasienStore.currentPasienTerpilihUid = this.props.navigation.state.params.name.key;
 			// this.props.pasienStore.itemsRekamMedikPasien = _.map(snapshot.val(), (value, key) => ({key, value}) )
 			// const arrRekamMedikPasien = _.map(this.props.pasienStore.itemRekamMedikPasien, (value, key) => ({key, value}) )
 			// console.log("Rekam Medik Pasien Container - WillMount");

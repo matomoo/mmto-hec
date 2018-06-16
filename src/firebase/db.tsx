@@ -17,15 +17,21 @@ export const doCreateUser = ( id, username, email, role ) => {
 	});
 };
 
-export const doSimpanPasien = ( id, tanggalPeriksa, hasilAnalysis ) => {
+export const doSimpanDiagnosaPasien = ( id, tanggalPeriksa, hasilDiagnosa ) => {
 	db.ref(`pasiens/${id}/rekamMedik/${tanggalPeriksa}`).update({
-		hasilAnalysis,
+		hasilDiagnosa,
+		statusDiagnosa : "ok",
+		statusBilling : "nok",
+		statusApotek: "nok",
 	});
 };
 
 export const doSimpanObatPasien = ( id, tanggalPeriksa, hasilObat ) => {
 	db.ref(`pasiens/${id}/rekamMedik/${tanggalPeriksa}`).update({
 		hasilObat,
+		statusObat : "ok",
+		statusBilling : "nok",
+		statusApotek: "nok",
 	});
 };
 

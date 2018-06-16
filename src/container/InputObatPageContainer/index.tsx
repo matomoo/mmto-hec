@@ -52,13 +52,13 @@ export default class InputObatPageContainer extends React.Component<Props, State
 	onSimpanKeTabelPasien = () => {
 		const dateToFormat = new Date();
 		if (this.props.inputDiagnosaStore.checkbox1) {
-			this.props.inputDiagnosaStore.addListItem(dataDefaultObat[0].namaObat );
+			this.props.inputDiagnosaStore.addListItem(dataDefaultObat[0].namaObat, dataDefaultObat[0].harga );
 		}
 		if (this.props.inputDiagnosaStore.checkbox2) {
-			this.props.inputDiagnosaStore.addListItem(dataDefaultObat[1].namaObat );
+			this.props.inputDiagnosaStore.addListItem(dataDefaultObat[1].namaObat, dataDefaultObat[1].harga );
 		}
 		if (this.props.inputDiagnosaStore.checkbox3) {
-			this.props.inputDiagnosaStore.addListItem(dataDefaultObat[2].namaObat );
+			this.props.inputDiagnosaStore.addListItem(dataDefaultObat[2].namaObat, dataDefaultObat[2].harga );
 		}
 		db.doSimpanObatPasien(
 				this.props.pasienStore.currentPasienTerpilihUid,
@@ -66,8 +66,7 @@ export default class InputObatPageContainer extends React.Component<Props, State
 				JSON.stringify(this.props.inputDiagnosaStore.selectedDiagnosa));
 		// console.log(this.props.inputDiagnosaStore.selectedDiagnosa);
 		this.props.navigation.goBack();
-		this.props.inputDiagnosaStore.selectedDiagnosa = [];
-		this.props.inputDiagnosaStore.index = 0;
+		this.props.inputDiagnosaStore.resetForm();
 	}
 
 	onNavigationBack= () => {

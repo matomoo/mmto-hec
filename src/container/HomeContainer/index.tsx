@@ -22,7 +22,7 @@ export default class HomeContainer extends React.Component<Props, State> {
 			this.props.mainStore.currentUserRole = snapshot.val().role;
 			// console.log(this.props.mainStore.currentUsername);
 		});
-		console.log(this.props);
+		// console.log(this.props);
 
 	}
 	render() {

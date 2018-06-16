@@ -51,22 +51,22 @@ export default class InputDiagnosaPageContainer extends React.Component<Props, S
 		// db.doSimpanPasien(this.props.pasienStore.currentPasienTerpilihUid, moment(dateToFormat).format("DD-MMM-YYYY"), this.props.pasienStore.analysis);
 		// this.props.navigation.navigate("RekamMedikPasien");
 		if (this.props.inputDiagnosaStore.checkbox1) {
-			this.props.inputDiagnosaStore.addListItem(dataDefaultDiagnosa[0].namaDiagnosa );
+			this.props.inputDiagnosaStore.addListItem(dataDefaultDiagnosa[0].namaDiagnosa, dataDefaultDiagnosa[0].harga );
 		}
 		if (this.props.inputDiagnosaStore.checkbox2) {
-			this.props.inputDiagnosaStore.addListItem(dataDefaultDiagnosa[1].namaDiagnosa );
+			this.props.inputDiagnosaStore.addListItem(dataDefaultDiagnosa[1].namaDiagnosa, dataDefaultDiagnosa[1].harga );
 		}
 		if (this.props.inputDiagnosaStore.checkbox3) {
-			this.props.inputDiagnosaStore.addListItem(dataDefaultDiagnosa[2].namaDiagnosa );
+			this.props.inputDiagnosaStore.addListItem(dataDefaultDiagnosa[2].namaDiagnosa, dataDefaultDiagnosa[2].harga );
 		}
-		db.doSimpanPasien(
+		db.doSimpanDiagnosaPasien(
 				this.props.pasienStore.currentPasienTerpilihUid,
 				moment(dateToFormat).format("DD-MMM-YYYY"),
-				JSON.stringify(this.props.inputDiagnosaStore.selectedDiagnosa));
-		// console.log(this.props.inputDiagnosaStore.selectedDiagnosa);
+				JSON.stringify(this.props.inputDiagnosaStore.selectedDiagnosa),
+			);
+		console.log(this.props.inputDiagnosaStore);
 		this.props.navigation.goBack();
-		this.props.inputDiagnosaStore.selectedDiagnosa = [];
-		this.props.inputDiagnosaStore.index = 0;
+		this.props.inputDiagnosaStore.resetForm();
 	}
 
 	onNavigationBack= () => {

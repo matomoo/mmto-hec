@@ -55,7 +55,7 @@ class Home extends React.Component<Props, State> {
 				<Left><Text>Riwayat Rekam Medik</Text></Left>
 				<Right><Icon active name="ios-arrow-forward"/></Right>
 			</CardItem>
-	);
+		);
 
 		const cardResepsionis = (
 			<List>
@@ -74,7 +74,7 @@ class Home extends React.Component<Props, State> {
 					<Right><Icon active name="ios-arrow-forward"/></Right>
 				</ListItem>
 			</List>
-	);
+		);
 
 		let selectedCard;
 		if (this.props.authRole === "admin") {

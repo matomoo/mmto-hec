@@ -2,7 +2,7 @@
 import * as React from "react";
 import { Item, Input, Icon, Form, Toast } from "native-base";
 import { observer, inject } from "mobx-react/native";
-
+import { AsyncStorage } from "react-native";
 import { auth } from "../../firebase";
 import Login from "../../stories/screens/Login";
 
@@ -24,11 +24,16 @@ export default class LoginContainer extends React.Component<Props, State> {
 			auth.doSignInWithEmailAndPassword(this.props.loginForm.email, this.props.loginForm.password)
 				.then((authUser) => {
 					// this.isValid = true;
+					// console.log(authUser);
 					this.props.mainStore.currentUid = authUser.user.uid;
 					this.props.loginForm.clearStore();
 					this.props.navigation.navigate("Drawer");
 					// console.log(authUser.user.uid);
-
+					try {
+						AsyncStorage.setItem("@HEC2:key", authUser.user.uid);
+						} catch (error) {
+						// Error saving data
+						}
 				})
 				.catch(error => {
 					this.props.loginForm.responseFirebase = error.message;
@@ -48,10 +53,24 @@ export default class LoginContainer extends React.Component<Props, State> {
 			});
 		}
 	}
+
+	cekAuthUser = async () => {
+		try {
+			const value = await AsyncStorage.getItem("@HEC2:key");
+				if (value !== null) {
+					// We have data!!
+					console.log(value);
+				}
+		} catch (error) {
+		// Error retrieving data
+		}
+	}
+
 	signup() {
 		this.props.navigation.navigate("DaftarUser");
 	}
 	render() {
+		// this.cekAuthUser();
 		const form = this.props.loginForm;
 		const Fields = (
 			<Form>
