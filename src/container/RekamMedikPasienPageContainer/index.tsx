@@ -1,6 +1,6 @@
 import * as React from "react";
 import { observer, inject } from "mobx-react/native";
-import _ from "lodash";
+// import _ from "lodash";
 import { db } from "../../firebase";
 
 import RekamMedikPasienPage from "../../stories/screens/RekamMedikPasienPage";

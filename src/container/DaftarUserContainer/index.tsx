@@ -36,14 +36,12 @@ export default class DaftarUserContainer extends React.Component<Props, State> {
 					//   console.log(this.responseFirebase);
 					//   this.isValid = false;
 					// });
-						
 				})
 				.catch(error => {
 					this.props.daftarUserForm.responseFirebase = error.message;
 					console.log(this.props.daftarUserForm.responseFirebase);
-					//this.props.daftarUserForm.isValid = false;
+					// this.props.daftarUserForm.isValid = false;
 				});
-			
 		} else {
 			Toast.show({
 				text: "Enter Valid Email & password!",
@@ -53,6 +51,10 @@ export default class DaftarUserContainer extends React.Component<Props, State> {
 			});
 		}
 	}
+	backTo() {
+		this.props.navigation.goBack();
+	}
+
 	render() {
 		const form = this.props.daftarUserForm;
 		const Fields = (
@@ -102,6 +104,10 @@ export default class DaftarUserContainer extends React.Component<Props, State> {
 				</Item>
 			</Form>
 		);
-		return <DaftarUser daftarUserForm={Fields} onLogin={() => this.login()} />;
+		return <DaftarUser
+			daftarUserForm={Fields}
+			onLogin={() => this.login()}
+			onNavBack={() => this.backTo()}
+			/>;
 	}
 }

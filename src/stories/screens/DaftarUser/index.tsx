@@ -3,10 +3,11 @@ import { Platform } from "react-native";
 import { Container, Content, Header, Body, Button, Text, View, Footer } from "native-base";
 import { Image } from "react-native";
 
-//import styles from "./styles";
+// import styles from "./styles";
 export interface Props {
 	daftarUserForm: any;
 	onLogin: Function;
+	onNavBack: Function;
 }
 export interface State {}
 class DaftarUser extends React.Component<Props, State> {
@@ -26,6 +27,11 @@ class DaftarUser extends React.Component<Props, State> {
 					<View padder>
 						<Button block onPress={() => this.props.onLogin()}>
 							<Text>Daftar User</Text>
+						</Button>
+					</View>
+					<View padder>
+						<Button block onPress={() => this.props.onNavBack()}>
+							<Text>Login User</Text>
 						</Button>
 					</View>
 				</Content>
