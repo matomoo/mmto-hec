@@ -4,6 +4,7 @@ class PasienStore {
 	@observable hasErrored = false;
 	@observable isLoading = true;
 	@observable itemsPasien = {};
+	@observable items2Pasien = {};
 	@observable itemsRekamMedikPasien = {};
 	@observable currentPasienUid = "";
 	@observable currentPasienUsername = "";

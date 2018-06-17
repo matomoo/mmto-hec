@@ -65,7 +65,10 @@ export default class InputObatPageContainer extends React.Component<Props, State
 				moment(dateToFormat).format("DD-MMM-YYYY"),
 				JSON.stringify(this.props.inputDiagnosaStore.selectedDiagnosa));
 		// console.log(this.props.inputDiagnosaStore.selectedDiagnosa);
-		this.props.navigation.goBack();
+		// const key = this.props.pasienStore.currentPasienTerpilihUid;
+		// this.props.navigation.navigate("RekamMedikPasien", {name: { key }});
+		this.props.navigation.navigate("Home");
+		// this.props.navigation.goBack();
 		this.props.inputDiagnosaStore.resetForm();
 	}
 

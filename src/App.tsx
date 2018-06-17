@@ -15,6 +15,7 @@ import RekamMedikPasien from "./container/RekamMedikPasienPageContainer";
 import InputAnalysis from "./container/InputAnalysisPageContainer";
 import InputObat from "./container/InputObatPageContainer";
 import DaftarTungguPage from "./container/DaftarTungguPageContainer";
+import DaftarBillingPage from "./container/DaftarBillingPageContainer";
 import InputDiagnosa from "./container/InputDiagnosaPageContainer";
 
 const Drawer = DrawerNavigator(
@@ -38,6 +39,7 @@ const App = StackNavigator(
 		InputAnalysis: { screen: InputAnalysis },
 		InputObat: { screen: InputObat },
 		DaftarTungguPage: { screen: DaftarTungguPage },
+		DaftarBillingPage: { screen: DaftarBillingPage },
 		InputDiagnosa: { screen: InputDiagnosa },
 		Drawer: { screen: Drawer },
 	},

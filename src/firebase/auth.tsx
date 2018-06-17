@@ -19,7 +19,8 @@ export const doSignInWithEmailAndPassword = (email, password) =>
 export const doSignOut = async () => {
 	auth.signOut();
 	try {
-		await AsyncStorage.setItem("@HEC2:key", "nok");
+		AsyncStorage.clear();
+		// await AsyncStorage.setItem("@HEC2:key", "nok");
 		} catch (error) {
 		// Error saving data
 		}

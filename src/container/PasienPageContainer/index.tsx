@@ -24,9 +24,19 @@ export default class PasienPageContainer extends React.Component<Props, State> {
 				});
 		} else if (currentUserRole === "resepsionis" ) {
 			db.GetAllPasienStatusTungguNOK().then(snapshot => {
+				snapshot.forEach(function(child1Snaps) {
+					// db.GetSingleUsers(child1Snaps.key).then(child2Snaps =>  {
+						// console.log(child2Snaps.val());
+						// this.props.pasienStore.items2Pasien[child1Snaps.key] = "11"; //  child2Snaps.val();
+						// console.log(child2Snaps.val());
+					// });
+					console.log(child1Snaps.key);
+					console.log(child1Snaps.val());
+				});
 				this.props.pasienStore.itemsPasien = snapshot.val() ;
+				// console.log(snapshot.val());
 				// console.log("Daftar Pasien - will mount");
-				// console.log(this.props.pasienStore.itemsPasien);
+				// console.log(this.props);
 			});
 		}
 	}

@@ -64,8 +64,10 @@ export default class InputDiagnosaPageContainer extends React.Component<Props, S
 				moment(dateToFormat).format("DD-MMM-YYYY"),
 				JSON.stringify(this.props.inputDiagnosaStore.selectedDiagnosa),
 			);
-		console.log(this.props.inputDiagnosaStore);
-		this.props.navigation.goBack();
+		// console.log(this.props.inputDiagnosaStore);
+		const key = this.props.pasienStore.currentPasienTerpilihUid;
+		this.props.navigation.navigate("RekamMedikPasien", {name: { key }});
+		// this.props.navigation.goBack();
 		this.props.inputDiagnosaStore.resetForm();
 	}
 

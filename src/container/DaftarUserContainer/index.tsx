@@ -38,8 +38,14 @@ export default class DaftarUserContainer extends React.Component<Props, State> {
 					// });
 				})
 				.catch(error => {
-					this.props.daftarUserForm.responseFirebase = error.message;
-					console.log(this.props.daftarUserForm.responseFirebase);
+					// this.props.daftarUserForm.responseFirebase = error.message;
+					// console.log(this.props.daftarUserForm.responseFirebase);
+					Toast.show({
+						text: error.message,
+						duration: 2000,
+						position: "top",
+						textStyle: { textAlign: "center" },
+					});
 					// this.props.daftarUserForm.isValid = false;
 				});
 		} else {

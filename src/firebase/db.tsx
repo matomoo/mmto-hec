@@ -20,18 +20,21 @@ export const doCreateUser = ( id, username, email, role ) => {
 export const doSimpanDiagnosaPasien = ( id, tanggalPeriksa, hasilDiagnosa ) => {
 	db.ref(`pasiens/${id}/rekamMedik/${tanggalPeriksa}`).update({
 		hasilDiagnosa,
+	});
+	db.ref(`pasiens/${id}`).update({
 		statusDiagnosa : "ok",
-		statusBilling : "nok",
-		statusApotek: "nok",
 	});
 };
 
 export const doSimpanObatPasien = ( id, tanggalPeriksa, hasilObat ) => {
 	db.ref(`pasiens/${id}/rekamMedik/${tanggalPeriksa}`).update({
 		hasilObat,
+	});
+	db.ref(`pasiens/${id}`).update({
 		statusObat : "ok",
 		statusBilling : "nok",
 		statusApotek: "nok",
+		daftarTunggu : "nok",
 	});
 };
 
@@ -58,6 +61,11 @@ export const GetAllPasienStatusTungguNOK = () => {
 
 export const GetLihatDaftarTunggu = () => {
 	const getter = db.ref("pasiens").orderByChild("daftarTunggu").equalTo("ok").once("value");
+	return getter;
+};
+
+export const GetLihatDaftarBilling = () => {
+	const getter = db.ref("pasiens").orderByChild("statusBilling").equalTo("nok").once("value");
 	return getter;
 };
 

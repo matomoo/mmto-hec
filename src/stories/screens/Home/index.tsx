@@ -42,7 +42,7 @@ class Home extends React.Component<Props, State> {
 				<CardItem
 					button
 					onPress={() => this.props.navigation.navigate("PasienPage")} >
-					<Left><Text>Daftar Pasien Periksa</Text></Left>
+					<Left><Text>List Daftar Tunggu</Text></Left>
 					<Right><Icon active name="ios-arrow-forward"/></Right>
 				</CardItem>
 		);
@@ -70,7 +70,19 @@ class Home extends React.Component<Props, State> {
 					button
 					onPress={() => this.props.navigation.navigate("DaftarTungguPage")}
 					>
-					<Left><Text>Lihat Daftar Tunggu</Text></Left>
+					<Left><Text>List Daftar Tunggu</Text></Left>
+					<Right><Icon active name="ios-arrow-forward"/></Right>
+				</ListItem>
+			</List>
+		);
+
+		const cardBilling = (
+			<List>
+				<ListItem
+					button
+					onPress={() => this.props.navigation.navigate("DaftarBillingPage")}
+					>
+					<Left><Text>List Daftar Billing</Text></Left>
 					<Right><Icon active name="ios-arrow-forward"/></Right>
 				</ListItem>
 			</List>
@@ -85,6 +97,8 @@ class Home extends React.Component<Props, State> {
 			selectedCard = cardPasien;
 		} else if (this.props.authRole === "resepsionis") {
 			selectedCard = cardResepsionis;
+		} else if (this.props.authRole === "billing") {
+			selectedCard = cardBilling;
 		}
 
 		return (
