@@ -16,6 +16,7 @@ import InputAnalysis from "./container/InputAnalysisPageContainer";
 import InputObat from "./container/InputObatPageContainer";
 import DaftarTungguPage from "./container/DaftarTungguPageContainer";
 import DaftarBillingPage from "./container/DaftarBillingPageContainer";
+import DetailBillingPasienPage from "./container/DetailBillingPasienPageContainer";
 import InputDiagnosa from "./container/InputDiagnosaPageContainer";
 
 const Drawer = DrawerNavigator(
@@ -40,6 +41,7 @@ const App = StackNavigator(
 		InputObat: { screen: InputObat },
 		DaftarTungguPage: { screen: DaftarTungguPage },
 		DaftarBillingPage: { screen: DaftarBillingPage },
+		DetailBillingPasienPage: { screen: DetailBillingPasienPage },
 		InputDiagnosa: { screen: InputDiagnosa },
 		Drawer: { screen: Drawer },
 	},

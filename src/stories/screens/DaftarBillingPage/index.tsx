@@ -41,7 +41,7 @@ class DaftarBillingPage extends React.Component<Props, State> {
 							{Object.keys(this.props.lists).map(key =>
 								<ListItem
 									key={key}
-									// onPress={() => this.props.navigation.navigate("RekamMedikPasien", {name: {key}} )}
+									onPress={() => this.props.navigation.navigate("DetailBillingPasienPage", {name: {key}} )}
 									>
 									<Left><Text>{this.props.lists[key].profil.username}</Text></Left>
 									<Left><Text>{this.props.lists[key].profil.role}</Text></Left>

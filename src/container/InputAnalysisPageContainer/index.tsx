@@ -30,7 +30,10 @@ export default class InputAnalysisPageContainer extends React.Component<Props, S
 
 	onSimpanKeTabelPasien = () => {
 		const dateToFormat = new Date();
-		db.doSimpanPasien(this.props.pasienStore.currentPasienTerpilihUid, moment(dateToFormat).format("DD-MMM-YYYY"), this.props.pasienStore.analysis);
+		db.doSimpanDiagnosaPasien(
+			this.props.pasienStore.currentPasienTerpilihUid,
+			moment(dateToFormat).format("DD-MMM-YYYY"),
+			this.props.pasienStore.analysis);
 		// this.props.navigation.navigate("RekamMedikPasien");
 		this.props.navigation.goBack();
 	}

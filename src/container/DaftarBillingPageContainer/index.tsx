@@ -20,7 +20,7 @@ export default class DaftarBillingPageContainer extends React.Component<Props, S
 		// const {key} = this.props.navigation.state.params.name ;
 		db.GetLihatDaftarBilling().then(snapshot => {
 			this.props.pasienStore.itemsPasien = snapshot.val();
-			console.log(snapshot.val());
+			// console.log(this.props);
 		});
 	}
 
