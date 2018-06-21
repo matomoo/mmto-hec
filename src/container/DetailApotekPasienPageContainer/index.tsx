@@ -3,7 +3,7 @@ import { observer, inject } from "mobx-react/native";
 // import _ from "lodash";
 import { db } from "../../firebase";
 
-import DetailBillingPasienPage from "../../stories/screens/DetailBillingPasienPage";
+import DetailApotekPasienPage from "../../stories/screens/DetailApotekPasienPage";
 export interface Props {
 	navigation: any;
 	pasienStore: any;
@@ -14,7 +14,7 @@ export interface State {}
 
 @inject ("pasienStore", "mainStore")
 @observer
-export default class DetailBillingPasienPageContainer extends React.Component<Props, State> {
+export default class DetailApotekPasienPageContainer extends React.Component<Props, State> {
 	constructor(props) {
 		super(props);
 		// console.log("Rekam Medik Pasien Container - Constructor");
@@ -42,8 +42,8 @@ export default class DetailBillingPasienPageContainer extends React.Component<Pr
 		// // this.props.pasienStore.currentPasienRole = objPasienTerpilih.value.role;
 	}
 
-	simpanPasienKeDaftarBilling() {
-		db.doUpdateStatusBillingPasien(this.props.navigation.state.params.name.key);
+	simpanPasienKeDaftarApotek() {
+		db.doUpdateStatusApotekPasien(this.props.navigation.state.params.name.key);
 		this.props.navigation.navigate("PasienPage");
 	}
 
@@ -55,14 +55,14 @@ export default class DetailBillingPasienPageContainer extends React.Component<Pr
 		const { currentUserRole } = this.props.mainStore;
 		const { rekamMedik } = this.props.pasienStore.itemsRekamMedikPasien;
 
-		return <DetailBillingPasienPage
+		return <DetailApotekPasienPage
 					navigation={this.props.navigation}
 					pasienUsername = {currentPasienTerpilihUsername}
 					pasienRekamMedik = { rekamMedik }
 					userRole = {currentUserRole}
-					onSimpanPasienKeDaftarBilling = {() => this.simpanPasienKeDaftarBilling()}
+					onSimpanPasienKeDaftarApotek = {() => this.simpanPasienKeDaftarApotek()}
 					/>;
-		// return <DetailBillingPasienPage
+		// return <DetailApotekPasienPage
 		// 			navigation={this.props.navigation}
 		// 			pasienRekamMedik = {this.props.pasienStore.itemsRekamMedikPasien ? this.props.pasienStore.itemsRekamMedikPasien : undefined }
 		// />;

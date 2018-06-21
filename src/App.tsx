@@ -18,6 +18,8 @@ import DaftarTungguPage from "./container/DaftarTungguPageContainer";
 import DaftarBillingPage from "./container/DaftarBillingPageContainer";
 import DetailBillingPasienPage from "./container/DetailBillingPasienPageContainer";
 import InputDiagnosa from "./container/InputDiagnosaPageContainer";
+import DaftarApotekPage from "./container/DaftarApotekPageContainer";
+import DetailApotekPasienPage from "./container/DetailApotekPasienPageContainer";
 
 const Drawer = DrawerNavigator(
 	{
@@ -42,6 +44,8 @@ const App = StackNavigator(
 		DaftarTungguPage: { screen: DaftarTungguPage },
 		DaftarBillingPage: { screen: DaftarBillingPage },
 		DetailBillingPasienPage: { screen: DetailBillingPasienPage },
+		DaftarApotekPage: { screen: DaftarApotekPage },
+		DetailApotekPasienPage: { screen: DetailApotekPasienPage },
 		InputDiagnosa: { screen: InputDiagnosa },
 		Drawer: { screen: Drawer },
 	},

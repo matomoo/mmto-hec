@@ -88,6 +88,18 @@ class Home extends React.Component<Props, State> {
 			</List>
 		);
 
+		const cardApotek = (
+			<List>
+				<ListItem
+					button
+					onPress={() => this.props.navigation.navigate("DaftarApotekPage")}
+					>
+					<Left><Text>List Daftar Obat Apotek</Text></Left>
+					<Right><Icon active name="ios-arrow-forward"/></Right>
+				</ListItem>
+			</List>
+		);
+
 		let selectedCard;
 		if (this.props.authRole === "admin") {
 			selectedCard = cardAdmin;
@@ -99,6 +111,8 @@ class Home extends React.Component<Props, State> {
 			selectedCard = cardResepsionis;
 		} else if (this.props.authRole === "billing") {
 			selectedCard = cardBilling;
+		} else if (this.props.authRole === "apotek") {
+			selectedCard = cardApotek;
 		}
 
 		return (

@@ -38,7 +38,16 @@ export default class PasienPageContainer extends React.Component<Props, State> {
 				// console.log("Daftar Pasien - will mount");
 				// console.log(this.props);
 			});
+		} else if (currentUserRole === "billing") {
+			db.GetAllPasienStatusBillingNOK().then(snapshot => {
+				this.props.pasienStore.itemsPasien = snapshot.val();
+				});
+		} else if (currentUserRole === "apotek") {
+			db.GetAllPasienStatusApotekNOK().then(snapshot => {
+				this.props.pasienStore.itemsPasien = snapshot.val();
+				});
 		}
+
 	}
 
 	pilihPasien ( keyx? ) {

@@ -45,6 +45,20 @@ export const doSimpanDaftarTunggu = ( uid ) => {
 	return getter;
 };
 
+export const doUpdateStatusBillingPasien = ( uid ) => {
+	const getter = db.ref(`pasiens/${uid}`).update({
+		statusBilling : "ok",
+	});
+	return getter;
+};
+
+export const doUpdateStatusApotekPasien = ( uid ) => {
+	const getter = db.ref(`pasiens/${uid}`).update({
+		statusApotek : "ok",
+	});
+	return getter;
+};
+
 export const onceGetUsers = () => {
 	db.ref("users").once("value");
 };
@@ -56,6 +70,16 @@ export const GetAllPasien = ( param1 ) => {
 
 export const GetAllPasienStatusTungguNOK = () => {
 	const getter = db.ref(`pasiens`).orderByChild("daftarTunggu").equalTo("nok").once("value");
+	return getter;
+};
+
+export const GetAllPasienStatusBillingNOK = () => {
+	const getter = db.ref(`pasiens`).orderByChild("statusBilling").equalTo("nok").once("value");
+	return getter;
+};
+
+export const GetAllPasienStatusApotekNOK = () => {
+	const getter = db.ref(`pasiens`).orderByChild("statusApotek").equalTo("nok").once("value");
 	return getter;
 };
 

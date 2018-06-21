@@ -16,10 +16,10 @@ export interface Props {
 	pasienUsername: any;
 	pasienRekamMedik: any;
 	userRole: any;
-	onSimpanPasienKeDaftarBilling: Function;
+	onSimpanPasienKeDaftarApotek: Function;
 }
 export interface State {}
-class DetailBillingPasienPage extends React.Component<Props, State> {
+class DetailApotekPasienPage extends React.Component<Props, State> {
 	rmDiagTitle: any;
 	rmDiagContent: any;
 	rmObatTitle: any;
@@ -53,13 +53,13 @@ class DetailBillingPasienPage extends React.Component<Props, State> {
 		// console.log("Rekam Medik Pasien Screen");
 		// console.log( this.props.pasienUsername );
 
-		const menuBilling = (
+		const menuApotek = (
 			<List>
 				<ListItem
 					key="1"
-					onPress={() => this.props.onSimpanPasienKeDaftarBilling() }
+					onPress={() => this.props.onSimpanPasienKeDaftarApotek() }
 					>
-					<Left><Text>Konfirmasi Pembayaran</Text></Left>
+					<Left><Text>Konfirmasi Pengambilan Obat</Text></Left>
 					<Right><Icon active name="ios-arrow-forward"/></Right>
 				</ListItem>
 				{/* <ListItem
@@ -75,8 +75,8 @@ class DetailBillingPasienPage extends React.Component<Props, State> {
 		let selectedCard;
 		if (this.props.userRole === "admin") {
 			// selectedCard = cardAdmin;
-		} else if (this.props.userRole === "billing") {
-			selectedCard = menuBilling;
+		} else if (this.props.userRole === "apotek") {
+			selectedCard = menuApotek;
 		}
 
 		return (
@@ -89,7 +89,7 @@ class DetailBillingPasienPage extends React.Component<Props, State> {
 					</Left>
 
 					<Body style={{ flex: 3 }}>
-						<Title>Detail Billing Pasien</Title>
+						<Title>Detail Pengambilan Obat</Title>
 					</Body>
 				</Header>
 
@@ -140,4 +140,4 @@ class DetailBillingPasienPage extends React.Component<Props, State> {
 	}
 }
 
-export default DetailBillingPasienPage;
+export default DetailApotekPasienPage;
