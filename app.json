@@ -20,8 +20,14 @@
       "image": "./assets/HEC_splash2.png",
       "backgroundColor": "#ffffff"
     },
-    "icon": "./assets/HEC_icon_w1024.png"
+    "icon": "./assets/HEC_icon_w1024.png",
+    "ios": {
+      "bundleIdentifier": "com.mmto.KlinikMataHasanuddin"
+    },
+    "android": {
+      "package": "com.mmto.KlinikMataHasanuddin"
     },
     "name": "KlinikMataHasanuddin",
-    "displayName": "Klinik Mata Hasanuddin"
-  }
+    "version": "0.0.1"
+  }  
+}

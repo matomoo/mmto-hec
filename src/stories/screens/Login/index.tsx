@@ -34,14 +34,14 @@ class Login extends React.Component<Props, State> {
 							<Text>Daftar User</Text>
 						</Button>
 					</View>
-				</Content>
-				<Footer style={{ backgroundColor: "#F8F8F8" }}>
-					<View style={{ alignItems: "center", opacity: 0.5, flexDirection: "row" }}>
+					<View style={{ backgroundColor: "#F8F8F8", alignItems: "center", opacity: 0.5, flexDirection: "row" }}>
 						<View padder>
 							<Text style={{ color: "#000" }}>HEC2 </Text>
 						</View>
 					</View>
-				</Footer>
+				</Content>
+				{/* <Footer style={{ backgroundColor: "#F8F8F8" }}>
+				</Footer> */}
 			</Container>
 		);
 	}

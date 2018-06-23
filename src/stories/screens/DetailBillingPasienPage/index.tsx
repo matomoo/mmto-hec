@@ -113,7 +113,8 @@ class DetailBillingPasienPage extends React.Component<Props, State> {
 									<ListItem
 										key = {element}
 									>
-										<Text>{"  - "}{element.name}</Text>
+										<Left><Text>{"  - "}{element.name}</Text></Left>
+										<Right><Text>{element.harga}</Text></Right>
 									</ListItem>,
 							)}
 						</List>
@@ -125,7 +126,8 @@ class DetailBillingPasienPage extends React.Component<Props, State> {
 									<ListItem
 										key = {element}
 									>
-										<Text>{"  - "}{element.name}</Text>
+										<Left><Text>{"  - "}{element.name}</Text></Left>
+										<Right><Text>{element.harga}</Text></Right>
 									</ListItem>,
 							)}
 						</List>
