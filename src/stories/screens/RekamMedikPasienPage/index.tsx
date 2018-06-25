@@ -4,6 +4,7 @@ import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Bod
 			ListItem,
 			Card,
 			CardItem,
+			H2,
 } from "native-base";
 // import _ from "lodash";
 
@@ -18,9 +19,34 @@ export interface Props {
 }
 export interface State {}
 class RekamMedikPasienPage extends React.Component<Props, State> {
+	rmDiagTitle: any;
+	rmDiagContent: any;
+	rmObatTitle: any;
+	rmObatContent: any;
+
+	listDetailRekamMedik = () => {
+		const aax = this.props.pasienRekamMedik;
+		// console.log("aax");
+		// console.log(aax);
+		try {
+			Object.keys(aax).map(keyx1 => {
+				this.rmDiagTitle = keyx1;
+				this.rmDiagContent = JSON.parse(aax[keyx1].hasilDiagnosa);
+				this.rmObatTitle = keyx1;
+				this.rmObatContent = JSON.parse(aax[keyx1].hasilObat);
+				},
+			);
+		} catch  (error) {
+			// console.log(error);
+		}
+		// console.log(this.rmDiagTitle);
+		// console.log(this.rmDiagContent);
+	}
+
 	render() {
 		const key = this.props.navigation.state.params.name.key;
-		const aa = (this.props.pasienRekamMedik);
+		// const aa = (this.props.pasienRekamMedik);
+		this.listDetailRekamMedik();
 		// const array = Object.keys(aa).map(function(k) { return obj[k] });
 
 		// console.log("Rekam Medik Pasien Screen");
@@ -101,7 +127,37 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 							</Left>
 						</CardItem>
 					</Card>
+					<Text><H2>Riwayat Rekam Medik</H2></Text>
 					<Card>
+						{ <List>
+							<ListItem key="0"><Text>{this.rmDiagTitle}</Text></ListItem>
+							<ListItem key="1"><Text>Hasil Diagnosa</Text></ListItem>
+							{!!this.rmDiagContent &&
+								this.rmDiagContent.map(element =>
+									<ListItem
+										key = {element}
+									>
+										<Left><Text>{"  - "}{element.name}</Text></Left>
+										<Right><Text>{element.harga}</Text></Right>
+									</ListItem>,
+							)}
+						</List>
+						}
+						{ <List>
+							<ListItem key="1"><Text>Hasil Obat</Text></ListItem>
+							{!!this.rmObatContent &&
+								this.rmObatContent.map(element =>
+									<ListItem
+										key = {element}
+									>
+										<Left><Text>{"  - "}{element.name}</Text></Left>
+										<Right><Text>{element.harga}</Text></Right>
+									</ListItem>,
+							)}
+						</List>
+						}
+					</Card>
+					{/* <Card>
 						{ !!aa &&
 							<List>
 							<ListItem><Text>Riwayat Rekam Medik</Text></ListItem>
@@ -115,7 +171,7 @@ class RekamMedikPasienPage extends React.Component<Props, State> {
 							)}
 							</List>
 						}
-					</Card>
+					</Card> */}
 					<Card>
 						{selectedCard}
 					</Card>

@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Platform } from "react-native";
-import { Container, Content, Header, Body, Button, Text, View, Footer } from "native-base";
+import { Container, Content, Header, Body, Button, Text, View, 
+	// Footer,
+		} from "native-base";
 import { Image } from "react-native";
 
 // import styles from "./styles";
