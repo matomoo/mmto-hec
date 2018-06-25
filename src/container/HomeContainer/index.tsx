@@ -3,7 +3,9 @@ import { observer, inject } from "mobx-react/native";
 
 import Home from "../../stories/screens/Home";
 import data from "./data";
-import { db } from "../../firebase";
+import { db,
+		// dbFStore,
+		} from "../../firebase";
 
 export interface Props {
 	navigation: any;
@@ -24,6 +26,15 @@ export default class HomeContainer extends React.Component<Props, State> {
 		});
 		// console.log(this.props);
 
+		// dbFStore.GetUsers
+		// 	.then((snapshot) => {
+		// 		snapshot.forEach(doc => {
+		// 			console.log(doc.id, "->",doc.data());
+		// 		});
+		// 	})
+		// 	.catch(err => {
+		// 		console.log("Error getting doc", err);
+		// 	});
 	}
 	render() {
 		const list = this.props.mainStore.items.toJS();
